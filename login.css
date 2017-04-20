@@ -1,0 +1,135 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    font-family: colaborate;
+    color: rgb(170, 170, 170);
+}
+html, body, .login-header, .agenda{
+    height: 100%;
+}
+
+@font-face {
+    font-family: 'colaborate';
+    src: url('../fonts/Colaborate-Bold.eot');
+    src: url('../fonts/Colaborate-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Colaborate-Bold.woff') format('woff'),
+         url('../fonts/Colaborate-Bold.ttf') format('truetype'),
+         url('../fonts/Colaborate-Bold.svg#../fonts/Colaborate-Bold') format('svg');
+    font-style: normal;
+    font-weight: normal;
+}
+.flex{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+}
+.flex-between{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+}
+.flex-around{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-around;
+}
+.flex-column{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+}
+.center{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.container{
+    width: 900px;
+    margin: 0 auto;
+}
+ul{
+    list-style-type: none;
+}
+li{
+    text-decoration: none;
+    cursor: pointer;
+}
+span{
+    font-size: 1em;
+}
+.title-span{
+    color: rgb(200, 160, 0);
+}
+/*==============================================================================
+Header
+==============================================================================*/
+.login-header{
+    background: url("img/bg.png") repeat center;
+}
+.menu-container h1{
+    margin: 0 0 60px 0;
+    font-size: 8em;
+}
+.forms{
+    position: relative;
+}
+.form-choose{
+    background: rgba(60, 60, 60, 0.8);
+    padding: 100px;
+    border-radius: 50px;
+}
+.form-choose li{
+    font-size: 4em;
+    padding: 20px;
+    border-radius: 50px;
+}
+.form-choose li:hover{
+    background: rgba(220, 220, 220, 0.8);
+    color: rgb(200, 160, 0);
+}
+.menu{
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    background: rgb(120, 120, 120);
+}
+.login{
+    left: 50px;
+    padding: 30px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.form-group input{
+    width: 250px;
+    padding: 10px;
+}
+.submit{
+    border: none;
+    margin: 10px 0 0 0;
+    cursor: pointer;
+}
+.message{
+    font-size: 3em;
+}
+
+
