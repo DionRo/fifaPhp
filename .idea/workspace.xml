@@ -12,17 +12,29 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="creator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/creator.php">
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="320">
+              <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="creator.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/creator.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="720">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <marker date="1492682515513" expanded="true" signature="821:1035" ph="INSERT INTO ${$dbname}.${$table}... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/create.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="658">
@@ -68,18 +80,6 @@
             <state relative-caret-position="720">
               <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="delete_manager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/delete_manager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="13" column="51" lean-forward="false" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
-              <folding>
-                <element signature="e#6#94#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -139,8 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/database.php" />
-        <option value="$PROJECT_DIR$/app/creator.php" />
         <option value="$USER_HOME$/Dropbox/Crucial Designs Private/Afgemaakt/Nikita Joosen/Website/css/main.css" />
         <option value="$USER_HOME$/Desktop/main.css" />
         <option value="$PROJECT_DIR$/app/delete_manager.php" />
@@ -153,6 +151,8 @@
         <option value="$PROJECT_DIR$/public/createPoules.php" />
         <option value="$PROJECT_DIR$/public/header.php" />
         <option value="$PROJECT_DIR$/public/create.php" />
+        <option value="$PROJECT_DIR$/app/creator.php" />
+        <option value="$PROJECT_DIR$/app/database.php" />
       </list>
     </option>
   </component>
@@ -209,6 +209,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fifaPhp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fifaPhp" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -321,12 +335,12 @@
       <workItem from="1492359538846" duration="44000" />
       <workItem from="1492359584617" duration="1289000" />
       <workItem from="1492423788315" duration="74000" />
-      <workItem from="1492676832292" duration="2743000" />
+      <workItem from="1492676832292" duration="4008000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13367000" />
+    <option name="totallyTimeSpent" value="14632000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="7" />
@@ -374,7 +388,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1492682515513" expanded="true" signature="821:1035" ph="INSERT INTO ${$dbname}.${$table}... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -424,7 +440,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1492682515513" expanded="true" signature="821:1035" ph="INSERT INTO ${$dbname}.${$table}... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -475,7 +493,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1960">
           <caret line="49" column="46" lean-forward="false" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
-          <folding />
+          <folding>
+            <marker date="1492682515513" expanded="true" signature="821:1035" ph="INSERT INTO ${$dbname}.${$table}... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -492,6 +512,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -525,7 +546,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1960">
           <caret line="49" column="46" lean-forward="false" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
-          <folding />
+          <folding>
+            <marker date="1492682515513" expanded="true" signature="821:1035" ph="INSERT INTO ${$dbname}.${$table}... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -542,6 +565,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -565,14 +589,6 @@
     </entry>
     <entry file="file://$USER_HOME$/Desktop/website/logout.php" />
     <entry file="file://$USER_HOME$/Desktop/website/index.php" />
-    <entry file="file://$PROJECT_DIR$/app/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Dropbox/Crucial Designs Private/Afgemaakt/Nikita Joosen/Website/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-526">
@@ -585,6 +601,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -595,14 +612,6 @@
           <folding>
             <element signature="e#6#94#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/creator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -679,6 +688,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="658">
           <caret line="31" column="45" lean-forward="true" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/creator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <marker date="1492682515513" expanded="true" signature="821:1035" ph="INSERT INTO ${$dbname}.${$table}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
           <folding />
         </state>
       </provider>
