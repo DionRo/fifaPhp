@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Beheerpagina Peter van de moesdijk</title>
+    <title>Beheerpagina Fifa</title>
 
     <link rel="stylesheet" href="../css/main.css">
     <!-- Latest compiled and minified CSS -->
