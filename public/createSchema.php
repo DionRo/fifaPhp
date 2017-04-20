@@ -12,8 +12,11 @@ require ('header.php');
 ?>
 
     <ul class="nav nav-tabs">
-        <li role="presentation"><a href="beheer.php">Beheer</a></li>
-        <li role="presentation" class="active"><a href="create.php">Voeg een product toe</a></li>
+        <li role="presentation" class="active"><a href="beheer.php">Beheer</a></li>
+        <li role="presentation"><a href="create.php">Teams</a></li>
+        <li role="presentation"><a href="createPlayer.php">Spelers</a></li>
+        <li role="presentation"><a href="createPoules.php">Poules</a></li>
+        <li role="presentation"><a href="createSchema.php">Maak Schema</a></li>
         <li role="presentation"><a href="logout.php">Logout</a></li>
     </ul>
     <header class="page-header">
