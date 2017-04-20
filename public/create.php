@@ -33,18 +33,6 @@ require ('header.php');
             <input type="text" class="form-control" name="prijs" placeholder="Vul hier uw prijs in!">
         </div>
         <div class="form-group">
-            <label for="categorie">Categorie</label>
-            <select  class="form-control" name="categorie">
-                <option value="0">Selecteer hier uw categorie</option>
-                <option value="1">Sigaren</option>
-                <option value="2">E-Sigaret</option>
-                <option value="3">E-Sigaret Vloeistof</option>
-                <option value="4">E-Sigaret Accessoires</option>
-                <option value="5">Wol</option>
-                <option value="6">Overige</option>
-            </select>
-        </div>
-        <div class="form-group">
             <label for="beschrijving">Beschrijving:</label>
             <textarea type="text" class="form-control" name="beschrijving" placeholder="Vul hier uw beschrijving!"></textarea>
         </div>
