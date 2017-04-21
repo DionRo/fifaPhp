@@ -13,7 +13,7 @@ require ('header.php');
 
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="beheer.php">Beheer</a></li>
-        <li role="presentation"><a href="create.php">Teams</a></li>
+        <li role="presentation"><a href="createTeam.php">Teams</a></li>
         <li role="presentation"><a href="createPlayer.php">Spelers</a></li>
         <li role="presentation"><a href="createPoules.php">Poules</a></li>
         <li role="presentation" class="active"><a href="createSchema.php">Maak Schema</a></li>
@@ -23,7 +23,7 @@ require ('header.php');
         <h2>Voeg hier uw nieuwe producten toe!</h2>
     </header>
 <section>
-    <form action="../app/creator.php" method="POST"  enctype="multipart/form-data">
+    <form action="../app/team_manager.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="titel">Titel:</label>
             <input type="text" class="form-control" name="titel" placeholder="Vul hier uw titel in!">

@@ -9,61 +9,136 @@ if (!isset($_SESSION['LoggedIn']) || !$_SESSION['LoggedIn']){
 }
 
 require ('header.php');
+require ('../app/database.php');
 ?>
 
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="beheer.php">Beheer</a></li>
-        <li role="presentation"><a href="create.php">Teams</a></li>
+        <li role="presentation"><a href="createTeam.php">Teams</a></li>
         <li role="presentation"  class="active"><a href="createPlayer.php">Spelers</a></li>
         <li role="presentation"><a href="createPoules.php">Poules</a></li>
         <li role="presentation"><a href="createSchema.php">Maak Schema</a></li>
         <li role="presentation"><a href="logout.php">Logout</a></li>
     </ul>
     <header class="page-header">
-        <h2>Voeg hier uw nieuwe producten toe!</h2>
+        <h2>Voeg hier uw nieuwe spelers toe!</h2>
     </header>
+<?php
+if (isset($_GET['message'])!= null )
+{
+    echo $_GET['message'];
+}
+?>
 <section>
-    <form action="../app/creator.php" method="POST"  enctype="multipart/form-data">
+    <form action="../app/player_manager.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="titel">Titel:</label>
-            <input type="text" class="form-control" name="titel" placeholder="Vul hier uw titel in!">
+            <label for="studentnummer">Studentnummer:</label>
+            <input type="text" class="form-control" name="studentnummer" placeholder="Vul hier uw studentnummer in!">
         </div>
         <div class="form-group">
-            <label for="prijs">Prijs:</label>
-            <input type="text" class="form-control" name="prijs" placeholder="Vul hier uw prijs in!">
+            <label for="voornaam">Voornaam:</label>
+            <input type="text" class="form-control" name="voornaam" placeholder="Vul hier uw voornaam in!">
         </div>
         <div class="form-group">
-            <label for="categorie">Categorie</label>
-            <select  class="form-control" name="categorie">
-                <option value="0">Selecteer hier uw categorie</option>
-                <option value="1">Sigaren</option>
-                <option value="2">E-Sigaret</option>
-                <option value="3">E-Sigaret Vloeistof</option>
-                <option value="4">E-Sigaret Accessoires</option>
-                <option value="5">Wol</option>
-                <option value="6">Overige</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="beschrijving">Beschrijving:</label>
-            <textarea type="text" class="form-control" name="beschrijving" placeholder="Vul hier uw beschrijving!"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="fileToUpload">Upload uw foto:</label>
-            <input type="file" name="fileToUpload" id="fileToUpload" class="form-control">
+            <label for="achternaam">Achternaam:</label>
+            <input type="text" class="form-control" name="achternaam" placeholder="Vul hier uw achternaam in!">
         </div>
 
-        <div class="form-group">
-            <input type="submit" value="Creeër uw product!" class="btn btn-primary" name="register">
+        <?php
+        $teamsPlayers = $db_conn->prepare( "SELECT * FROM tbl_teams");
+        $teamsPlayers->execute();
+        $teamsPlayers = $teamsPlayers->fetchAll(PDO::FETCH_ASSOC);
+        ?>
+<!---->
+<!--        <div class="form-group">-->
+<!--            <label for="teamnummer">Teamnummer</label>-->
+<!--            <select  class="form-control" name="teamnummer">-->
+<!--                <option value="0">Kies een teamnummer</option>-->
+<!--                <option value="1">Team 1</option>-->
+<!--                <option value="2">Team 2</option>-->
+<!--                <option value="3">Team 3</option>-->
+<!--                <option value="4">Team 4</option>-->
+<!--                <option value="5">Team 5</option>-->
+<!--                <option value="6">Team 6</option>-->
+<!--                <option value="7">Team 7</option>-->
+<!--            </select>-->
+<!--        </div>-->
+            <div class="form-group">
+                <label for="teamnummer">team</label>
+                <select  class="form-control" name="teamnummer">
+                    <?php
+
+                    foreach ($teamsPlayers as $teamsPlayer)
+                    {
+                      for ($i = 1; $i <= 1; $i++)
+                      {
+                      echo "<option value=".$i."> 
+                        
+                            <p>".$teamsPlayer['name']."</p>        
+                            </option>";
+                      };
+                    
+                    }
+                    ?>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+            <input type="submit" value="Creeër uw speler!" class="btn btn-primary" name="register">
         </div>
             <!-- alle datums in een optie veld -->
     </form>
+    <header class="page-header">
+        <h2>Huidige spelers</h2>
+    </header>
+
+
     <?php
-    if (isset($_GET['message'])!= null )
-    {
-        echo $_GET['message'];
-    }
+
+    // Userinput
+    $page = isset($_GET['page'])?(int)$_GET['page'] : 1;
+    $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=4  ?(int)$_GET['per-page'] : 4;
+
+    //Positioning
+    $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+    //SQL
+    $players = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_players LIMIT {$start},{$perPage}");
+    $players->execute();
+    $players = $players->fetchAll(PDO::FETCH_ASSOC);
+
+    $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+    $pages = ceil($total /$perPage);
     ?>
+
+    <ul class="list-group">
+        <?php
+        foreach ($players as $player)
+        {
+            $id="{$player['id']}";
+            echo "<ul class=\"agenda-item\">
+                          <form action=\"../app/adjust_form.php\" method='\"POST\"'>
+                          <input type=\"hidden\" name=\"adjust\" value=\"{$player['id']}\">
+                          <input class=\"adjust\" type=\"submit\" value=\"adjust\">
+                             </form>
+                          <li>Studentnummer {{$player['student_id']}}   Voornaam {{$player['first_name']}} Achternaam {{$player['last_name']}}
+                          teamnummer {{$player['team_id']}}</li>
+                          <form action=\"../app/delete_manager.php\" method='\"POST\"'>
+                          <input type=\"hidden\" name=\"delete\" value=\"{$player['id']}\">
+                          <input class=\"delete\" type=\"submit\" value=\"delete\">
+                          </form>
+                          </ul>";
+        }
+
+
+        ?>
+    </ul>
+    <div class="pagenation">
+<?php  for ($x =1; $x <= $pages; $x++) :?>
+    <a href="?page=<?php echo $x; ?>&per-page=<?php echo $perPage ?>"><?php  echo $x; ?></a>
+<?php endfor; ?>
+    </div>
 </section>
 
 <?php

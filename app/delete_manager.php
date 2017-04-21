@@ -11,7 +11,7 @@ require ("database.php");
 if (isset($_GET['delete'])){
     $deleteId = $_GET['delete'];
 
-    $sqlDel = "DELETE FROM producten WHERE product_id = '$deleteId'";
+    $sqlDel = "DELETE FROM producten WHERE id = '$deleteId'";
     $db_conn->query($sqlDel);
 
     $message = 'Item deleted';
