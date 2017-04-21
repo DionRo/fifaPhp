@@ -38,18 +38,18 @@
         <entry file="file://$PROJECT_DIR$/public/createPlayer.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="338">
-              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="7" selection-end-line="64" selection-end-column="18" />
+              <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding>
-                <marker date="1492767505860" expanded="true" signature="1800:1818" ph="SELECT * FRO... tbl_poules" />
-                <marker date="1492767505860" expanded="true" signature="1800:1823" ph="SELECT * FRO... tbl_teams" />
-                <marker date="1492767505860" expanded="true" signature="1826:1835" ph="SELECT * FRO... tbl_poules" />
-                <marker date="1492767505860" expanded="true" signature="3900:3961" ph="SELECT * FRO... tbl_players" />
-                <marker date="1492767505860" expanded="true" signature="3900:3963" ph="SELECT * FRO... tbl_players" />
-                <marker date="1492767505860" expanded="true" signature="4347:5183" ph="..." />
-                <marker date="1492767505860" expanded="true" signature="4432:4645" ph="..." />
-                <marker date="1492767505860" expanded="true" signature="4676:4853" ph="..." />
-                <marker date="1492767505860" expanded="true" signature="5024:5151" ph="..." />
-                <marker date="1492767505860" expanded="true" signature="5024:5183" ph="..." />
+                <marker date="1492768041263" expanded="true" signature="1800:1818" ph="SELECT * FRO... tbl_poules" />
+                <marker date="1492768041263" expanded="true" signature="1800:1823" ph="SELECT * FRO... tbl_teams" />
+                <marker date="1492768041263" expanded="true" signature="1826:1835" ph="SELECT * FRO... tbl_poules" />
+                <marker date="1492768041263" expanded="true" signature="3132:3193" ph="SELECT * FRO... tbl_players" />
+                <marker date="1492768041263" expanded="true" signature="3132:3195" ph="SELECT * FRO... tbl_players" />
+                <marker date="1492768041263" expanded="true" signature="3579:4415" ph="..." />
+                <marker date="1492768041263" expanded="true" signature="3664:3877" ph="..." />
+                <marker date="1492768041263" expanded="true" signature="3908:4085" ph="..." />
+                <marker date="1492768041263" expanded="true" signature="4256:4383" ph="..." />
+                <marker date="1492768041263" expanded="true" signature="4256:4415" ph="..." />
               </folding>
             </state>
           </provider>
@@ -366,12 +366,12 @@
       <workItem from="1492359584617" duration="1289000" />
       <workItem from="1492423788315" duration="74000" />
       <workItem from="1492676832292" duration="4748000" />
-      <workItem from="1492692416780" duration="11637000" />
+      <workItem from="1492692416780" duration="12273000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27009000" />
+    <option name="totallyTimeSpent" value="27645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -853,18 +853,18 @@
     <entry file="file://$PROJECT_DIR$/public/createPlayer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="7" selection-end-line="64" selection-end-column="18" />
+          <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding>
-            <marker date="1492767505860" expanded="true" signature="1800:1818" ph="SELECT * FRO... tbl_poules" />
-            <marker date="1492767505860" expanded="true" signature="1800:1823" ph="SELECT * FRO... tbl_teams" />
-            <marker date="1492767505860" expanded="true" signature="1826:1835" ph="SELECT * FRO... tbl_poules" />
-            <marker date="1492767505860" expanded="true" signature="3900:3961" ph="SELECT * FRO... tbl_players" />
-            <marker date="1492767505860" expanded="true" signature="3900:3963" ph="SELECT * FRO... tbl_players" />
-            <marker date="1492767505860" expanded="true" signature="4347:5183" ph="..." />
-            <marker date="1492767505860" expanded="true" signature="4432:4645" ph="..." />
-            <marker date="1492767505860" expanded="true" signature="4676:4853" ph="..." />
-            <marker date="1492767505860" expanded="true" signature="5024:5151" ph="..." />
-            <marker date="1492767505860" expanded="true" signature="5024:5183" ph="..." />
+            <marker date="1492768041263" expanded="true" signature="1800:1818" ph="SELECT * FRO... tbl_poules" />
+            <marker date="1492768041263" expanded="true" signature="1800:1823" ph="SELECT * FRO... tbl_teams" />
+            <marker date="1492768041263" expanded="true" signature="1826:1835" ph="SELECT * FRO... tbl_poules" />
+            <marker date="1492768041263" expanded="true" signature="3132:3193" ph="SELECT * FRO... tbl_players" />
+            <marker date="1492768041263" expanded="true" signature="3132:3195" ph="SELECT * FRO... tbl_players" />
+            <marker date="1492768041263" expanded="true" signature="3579:4415" ph="..." />
+            <marker date="1492768041263" expanded="true" signature="3664:3877" ph="..." />
+            <marker date="1492768041263" expanded="true" signature="3908:4085" ph="..." />
+            <marker date="1492768041263" expanded="true" signature="4256:4383" ph="..." />
+            <marker date="1492768041263" expanded="true" signature="4256:4415" ph="..." />
           </folding>
         </state>
       </provider>

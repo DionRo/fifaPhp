@@ -49,20 +49,7 @@ if (isset($_GET['message'])!= null )
         $teamsPlayers->execute();
         $teamsPlayers = $teamsPlayers->fetchAll(PDO::FETCH_ASSOC);
         ?>
-<!---->
-<!--        <div class="form-group">-->
-<!--            <label for="teamnummer">Teamnummer</label>-->
-<!--            <select  class="form-control" name="teamnummer">-->
-<!--                <option value="0">Kies een teamnummer</option>-->
-<!--                <option value="1">Team 1</option>-->
-<!--                <option value="2">Team 2</option>-->
-<!--                <option value="3">Team 3</option>-->
-<!--                <option value="4">Team 4</option>-->
-<!--                <option value="5">Team 5</option>-->
-<!--                <option value="6">Team 6</option>-->
-<!--                <option value="7">Team 7</option>-->
-<!--            </select>-->
-<!--        </div>-->
+
             <div class="form-group">
                 <label for="teamnummer">team</label>
                 <select  class="form-control" name="teamnummer">
@@ -70,13 +57,11 @@ if (isset($_GET['message'])!= null )
 
                     foreach ($teamsPlayers as $teamsPlayer)
                     {
-                      for ($i = 1; $i <= 1; $i++)
-                      {
+                      $i++;
                       echo "<option value=".$i."> 
                         
                             <p>".$teamsPlayer['name']."</p>        
                             </option>";
-                      };
                     
                     }
                     ?>
