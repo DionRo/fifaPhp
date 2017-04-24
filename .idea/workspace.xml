@@ -34,7 +34,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createPlayer.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="createPlayer.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/createPlayer.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="338">
@@ -55,15 +55,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="player_manager.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="player_manager.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/player_manager.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="880">
-              <caret line="22" column="58" lean-forward="false" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+              <caret line="22" column="59" lean-forward="false" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
               <folding>
-                <marker date="1492761743464" expanded="true" signature="995:1164" ph="INSERT INTO ${$dbname}.${$table4}... " />
-                <marker date="1492761743464" expanded="true" signature="995:1185" ph="INSERT INTO ${$dbname}.${$table3}... " />
-                <marker date="1492761743464" expanded="true" signature="995:1402" ph="INSERT INTO ${$dbname}.${$table4}... " />
+                <marker date="1493024043107" expanded="true" signature="995:1164" ph="INSERT INTO ${$dbname}.${$table4}... " />
+                <marker date="1493024043107" expanded="true" signature="995:1186" ph="INSERT INTO ${$dbname}.${$table3}... " />
+                <marker date="1493024043107" expanded="true" signature="995:1403" ph="INSERT INTO ${$dbname}.${$table4}... " />
               </folding>
             </state>
           </provider>
@@ -166,8 +166,8 @@
         <option value="$PROJECT_DIR$/public/createTeam.php" />
         <option value="$PROJECT_DIR$/app/delete_manager.php" />
         <option value="$PROJECT_DIR$/app/team_manager.php" />
-        <option value="$PROJECT_DIR$/app/player_manager.php" />
         <option value="$PROJECT_DIR$/public/createPlayer.php" />
+        <option value="$PROJECT_DIR$/app/player_manager.php" />
       </list>
     </option>
   </component>
@@ -366,16 +366,15 @@
       <workItem from="1492359584617" duration="1289000" />
       <workItem from="1492423788315" duration="74000" />
       <workItem from="1492676832292" duration="4748000" />
-      <workItem from="1492692416780" duration="12273000" />
+      <workItem from="1492692416780" duration="13523000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27645000" />
+    <option name="totallyTimeSpent" value="28895000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2502604" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -838,18 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/player_manager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="22" column="58" lean-forward="false" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
-          <folding>
-            <marker date="1492761743464" expanded="true" signature="995:1164" ph="INSERT INTO ${$dbname}.${$table4}... " />
-            <marker date="1492761743464" expanded="true" signature="995:1185" ph="INSERT INTO ${$dbname}.${$table3}... " />
-            <marker date="1492761743464" expanded="true" signature="995:1402" ph="INSERT INTO ${$dbname}.${$table4}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/createPlayer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -865,6 +852,18 @@
             <marker date="1492768041263" expanded="true" signature="3908:4085" ph="..." />
             <marker date="1492768041263" expanded="true" signature="4256:4383" ph="..." />
             <marker date="1492768041263" expanded="true" signature="4256:4415" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/player_manager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="22" column="59" lean-forward="false" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
+          <folding>
+            <marker date="1493024043107" expanded="true" signature="995:1164" ph="INSERT INTO ${$dbname}.${$table4}... " />
+            <marker date="1493024043107" expanded="true" signature="995:1186" ph="INSERT INTO ${$dbname}.${$table3}... " />
+            <marker date="1493024043107" expanded="true" signature="995:1403" ph="INSERT INTO ${$dbname}.${$table4}... " />
           </folding>
         </state>
       </provider>
