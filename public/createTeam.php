@@ -69,33 +69,53 @@ if (isset($_GET['message'])!= null )
     <header class="page-header">
         <h2>Huidige teams</h2>
     </header>
-    <?php
-    $sql = "SELECT * FROM tbl_teams";
-    $teams = $db_conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-    $db_conn->query($sql);
-    ?>
 
-    <ul class="list-group">
         <?php
-        foreach ($teams as $team)
-        {
-            $id="{$team['id']}";
-            echo "<ul class=\"agenda-item\">
+
+        // Userinput
+        $page = isset($_GET['page'])?(int)$_GET['page'] : 1;
+        $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=4  ?(int)$_GET['per-page'] : 4;
+
+        //Positioning
+        $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+        //SQL
+        $teams = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_teams LIMIT {$start},{$perPage}");
+        $teams->execute();
+        $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
+
+        $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+        $pages = ceil($total /$perPage);
+        ?>
+
+        <ul class="list-group">
+            <?php
+            foreach ($teams as $team)
+            {
+                $id="{$team['id']}";
+                echo "<ul class=\"agenda-item\">
                           <form action=\"../app/adjust_form.php\" method='\"POST\"'>
                           <input type=\"hidden\" name=\"adjust\" value=\"{$team['id']}\">
-                          <input type=\"hidden\" name=\"adjust\" value=\"{$team['name']}\">
-                          <input type=\"hidden\" name=\"adjust\" value=\"{$team['poule_id']}\">
                           <input class=\"adjust\" type=\"submit\" value=\"adjust\">
-                          </form>
-                          <li>{$team['name']}</li>
+                             </form>
+                          <li>Teamnaam {{$team['name']}}</li>
                           <form action=\"../app/delete_manager.php\" method='\"POST\"'>
                           <input type=\"hidden\" name=\"delete\" value=\"{$team['id']}\">
                           <input class=\"delete\" type=\"submit\" value=\"delete\">
                           </form>
                           </ul>";
-        }
-        ?>
+            }
+
+
+            ?>
+        </ul>
+        <div class="pagenation">
+            <?php  for ($x =1; $x <= $pages; $x++) :?>
+                <a href="?page=<?php echo $x; ?>&per-page=<?php echo $perPage ?>"><?php  echo $x; ?></a>
+            <?php endfor; ?>
+        </div>
 </section>
+
 
 <?php
  require ('footer.php');
