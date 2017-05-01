@@ -91,7 +91,7 @@ if (isset($_GET['message'])!= null )
 
     // Userinput
     $page = isset($_GET['page'])?(int)$_GET['page'] : 1;
-    $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=6  ?(int)$_GET['per-page'] : 6;
+    $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=20 ?(int)$_GET['per-page'] : 20;
 
     //Positioning
     $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
