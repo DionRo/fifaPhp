@@ -20,7 +20,7 @@ if (empty($_POST['teamnummer'])){header("Location: ../public/createPlayer.php?me
 
 
 $sqlAdd = "INSERT INTO " .$dbname . "." . $table4 . "(`student_id`,`team_id`,`first_name`,`last_name`) VALUES ('" . $studentnummer . "',
-'" . $teamnummer . "','" . $voornaam . "','" . $achternaams . "')";
+'" . $teamnummer . "','" . $voornaam . "','" . $achternaam . "')";
 $sqlAddObj = $db_conn->prepare($sqlAdd);
 $sqlAddObj->execute();
 $ErrorMessage = "<strong>Toevoegen was succesvol!</strong>";
