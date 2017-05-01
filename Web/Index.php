@@ -42,72 +42,79 @@
 </header>
 
 <div class="container">
+
     <div class="intro">
         <h2>Welcome</h2>
 
-        <div class="description">
+        <div class="Content">
 
-            <h3>Lorem</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores ex nemo voluptates. Delectus dolorem facilis, ipsam laudantium nihil sapiente ullam vero voluptas. Asperiores dignissimos iure molestias nam nobis quam soluta.</p>
-        </div>
+            <div class="description">
 
-        <div class="extra">
+                <h3>Description</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores ex nemo voluptates. Delectus dolorem facilis, ipsam laudantium nihil sapiente ullam vero voluptas. Asperiores dignissimos iure molestias nam nobis quam soluta.</p>
+            </div>
 
-            <h3>lorem</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam aperiam cupiditate debitis dignissimos dolor doloremque doloribus, eveniet, iusto nostrum perferendis possimus quibusdam repudiandae saepe totam unde vitae! Explicabo, mollitia.</p>
+            <div class="extra">
+
+                <h3>Extra</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam aperiam cupiditate debitis dignissimos dolor doloremque doloribus, eveniet, iusto nostrum perferendis possimus quibusdam repudiandae saepe totam unde vitae! Explicabo, mollitia.</p>
+            </div>
         </div>
     </div>
 
-    <div class="Groep">
-        <h2>Lorem</h2>
+    <div class="Group">
+        <h2>Groep 3</h2>
 
         <div class="information">
 
-            <h3>lorem</h3>
+            <h3>Who we are</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cumque dolorum minus nostrum quisquam. Ab error facilis repellat vitae voluptatum! Ducimus explicabo impedit ipsum nemo qui! Adipisci asperiores tempore voluptates.</p>
         </div>
 
         <div class="Enginers">
 
             <h2>The Brains Behind</h2>
-            
-            <div class="member">
 
-                <h4>Name</h4>
-                <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+            <div class="team">
 
-                <div class="describe_Member">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
+                <div class="member">
+
+                    <h4>Name</h4>
+                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+
+                    <div class="describe_Member">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="member">
+                <div class="member">
 
-                <h4>Name</h4>
-                <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+                    <h4>Name</h4>
+                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
-                <div class="describe_Member">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
+                    <div class="describe_Member">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="member">
+                <div class="member">
 
-                <h4>Name</h4>
-                <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+                    <h4>Name</h4>
+                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
-                <div class="describe_Member">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
+                    <div class="describe_Member">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="member">
+                <div class="member">
 
-                <h4>Name</h4>
-                <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+                    <h4>Name</h4>
+                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
-                <div class="describe_Member">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
+                    <div class="describe_Member">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
+                    </div>
                 </div>
             </div>
         </div>
