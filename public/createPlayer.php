@@ -18,7 +18,13 @@ require ('../app/database.php');
         <li role="presentation" class="active"><a href="createPlayer.php">Spelers</a></li>
         <li role="presentation"><a href="createPoules.php">Poules</a></li>
         <li role="presentation"><a href="createSchema.php">Maak Schema</a></li>
-        <li role="presentation"><a href="createUser.php">Creeër gebruiker</a></li>
+        <?php
+        if ( $_SESSION['adminLevel'] == "2" ) {
+            echo "
+                        <li role=\"presentation\"><a href=\"createUser.php\">Creeër gebruiker</a></li>
+                ";
+        }
+        ?>
         <li role="presentation"><a href="logout.php">Logout</a></li>
     </ul>
 
@@ -85,7 +91,7 @@ if (isset($_GET['message'])!= null )
 
     // Userinput
     $page = isset($_GET['page'])?(int)$_GET['page'] : 1;
-    $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=6  ?(int)$_GET['per-page'] : 6;
+    $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=20 ?(int)$_GET['per-page'] : 20;
 
     //Positioning
     $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;

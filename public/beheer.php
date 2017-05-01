@@ -30,7 +30,13 @@ require ('../app/database.php');
     <li role="presentation"><a href="createPlayer.php">Spelers</a></li>
     <li role="presentation"><a href="createPoules.php">Poules</a></li>
     <li role="presentation"><a href="createSchema.php">Maak Schema</a></li>
-    <li role="presentation"><a href="createUser.php">Creeër gebruiker</a></li>
+    <?php
+    if ( $_SESSION['adminLevel'] == "2" ) {
+        echo "
+                        <li role=\"presentation\"><a href=\"createUser.php\">Creeër gebruiker</a></li>
+                ";
+    }
+    ?>
     <li role="presentation"><a href="logout.php">Logout</a></li>
 </ul>
 
