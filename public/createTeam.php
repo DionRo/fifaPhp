@@ -2,7 +2,8 @@
 
 session_start();
 
-if (!isset($_SESSION['LoggedIn']) || !$_SESSION['LoggedIn']){
+if (!isset ($_SESSION['adminLevel'])  || !$_SESSION['adminLevel'])
+{
     $ErrorMessage = "<strong>U moet eerst inloggen voor dat u op deze pagina kan komen</strong>";
     header("Location: ../index.php?message=$ErrorMessage");
     die;
@@ -11,15 +12,16 @@ if (!isset($_SESSION['LoggedIn']) || !$_SESSION['LoggedIn']){
 require ('header.php');
 require ('../app/database.php');
 ?>
-
     <ul class="nav nav-tabs">
         <li role="presentation"><a href="beheer.php">Beheer</a></li>
         <li role="presentation" class="active"><a href="createTeam.php">Teams</a></li>
         <li role="presentation"><a href="createPlayer.php">Spelers</a></li>
         <li role="presentation"><a href="createPoules.php">Poules</a></li>
         <li role="presentation"><a href="createSchema.php">Maak Schema</a></li>
+        <li role="presentation"><a href="createUser.php">Creeër gebruiker</a></li>
         <li role="presentation"><a href="logout.php">Logout</a></li>
     </ul>
+
     <header class="page-header">
         <h2>Voeg hier uw nieuwe teams toe!</h2>
     </header>

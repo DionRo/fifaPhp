@@ -2,7 +2,8 @@
 
 session_start();
 
-if (!isset($_SESSION['LoggedIn']) || !$_SESSION['LoggedIn']){
+if (!isset ($_SESSION['adminLevel'])  || !$_SESSION['adminLevel'])
+{
     $ErrorMessage = "<strong>U moet eerst inloggen voor dat u op deze pagina kan komen</strong>";
     header("Location: ../index.php?message=$ErrorMessage");
     die;
@@ -18,8 +19,10 @@ require ('../app/database.php');
         <li role="presentation"><a href="createPlayer.php">Spelers</a></li>
         <li role="presentation" class="active"><a href="createPoules.php">Poules</a></li>
         <li role="presentation"><a href="createSchema.php">Maak Schema</a></li>
+        <li role="presentation"><a href="createUser.php">Creeër gebruiker</a></li>
         <li role="presentation"><a href="logout.php">Logout</a></li>
     </ul>
+
     <header class="page-header">
         <h2>Voeg hier uw nieuwe poules toe!</h2>
     </header>
