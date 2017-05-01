@@ -37,11 +37,29 @@ if (isset($_GET['message'])!= null )
             <label for="nameTeam">Naam Team:</label>
             <input type="text" class="form-control" name="nameTeam" placeholder="Vul hier uw teamnaam in!">
         </div>
-        <div class="form-group">
-            <label for="pouleID">Poule nummer:</label>
-            <input type="number" class="form-control" name="pouleID" placeholder="Vul hier het poule nummer in in!">
-        </div>
+        <?php
+        $poules = $db_conn->prepare( "SELECT * FROM tbl_poules");
+        $poules->execute();
+        $poules = $poules->fetchAll(PDO::FETCH_ASSOC);
 
+        ?>
+
+        <div class="form-group">
+            <label for="pouleID">Poule:</label>
+            <select  class="form-control" name="pouleID">
+                <?php
+
+                foreach ($poules as $poule)
+                {
+                    echo "<option value=".$poule['id']."> 
+                        
+                            <p>".$poule['naam']."</p>        
+                            </option>";
+
+                }
+                ?>
+            </select>
+        </div>
         <div class="form-group">
             <input type="submit" value="Creeër uw team!" class="btn btn-primary" name="register">
         </div>
