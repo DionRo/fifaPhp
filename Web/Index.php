@@ -71,21 +71,11 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cumque dolorum minus nostrum quisquam. Ab error facilis repellat vitae voluptatum! Ducimus explicabo impedit ipsum nemo qui! Adipisci asperiores tempore voluptates.</p>
         </div>
 
-        <div class="Enginers">
+        <div class="Engineers">
 
             <h2>The Brains Behind</h2>
 
             <div class="team">
-
-                <div class="member">
-
-                    <h4>Name</h4>
-                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
-
-                    <div class="describe_Member">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
-                    </div>
-                </div>
 
                 <div class="member">
 
