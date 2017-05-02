@@ -57,9 +57,15 @@ require ('header.php');
             $matches->execute();
             $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
 
+//            echo '$matches:';
+//            var_dump($matches);
+
             $teams = $db_conn->prepare ("SELECT * FROM tbl_teams");
             $teams->execute();
-            $teams = $matches->fetchAll(PDO::FETCH_ASSOC);
+            $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
+
+//            echo '$teams:';
+//            var_dump($teams);
 
             $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
             $pages = ceil($total /$perPage);
@@ -70,12 +76,16 @@ require ('header.php');
                 foreach ($matches as $match)
                 {
                     $id="{$match['id']}";
+
+                    $name_team_a = $teams[$match['team_id_a']]['name'];
+                    $name_team_b = $teams[$match['team_id_b']]['name'];
+
                     echo "<ul class=\"agenda-item\">
                           <form action=\"../app/adjust_form.php\" method='\"POST\"'>
                           <input type=\"hidden\" name=\"adjust\" value=\"{$match['id']}\">
                           <input class=\"adjust\" type=\"submit\" value=\"adjust\">
                              </form>
-                          <li>Team A {{$match['team_id_a']}} Team B {{$match['team_id_b']}}</li>
+                          <li>$name_team_a - $name_team_b</li>
                           <form action=\"../app/delete_manager.php\" method='\"POST\"'>
                           <input type=\"hidden\" name=\"delete\" value=\"{$match['id']}\">
                           <input class=\"delete\" type=\"submit\" value=\"delete\">
