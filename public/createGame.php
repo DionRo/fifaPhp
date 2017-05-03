@@ -15,7 +15,7 @@ require ('header.php');
         <li role="presentation"><a href="beheer.php">Beheer</a></li>
         <li role="presentation"><a href="createTeam.php">Teams</a></li>
         <li role="presentation"><a href="createPlayer.php">Spelers</a></li>
-        <li role="presentation" class="active"><a href="createGame.php">Maak Schema</a></li>
+        <li role="presentation" class="active"><a href="createGame.php">Wedstrijd data</a></li>
         <?php
         if ( $_SESSION['adminLevel'] == "2" ) {
             echo "
@@ -27,7 +27,7 @@ require ('header.php');
     </ul>
 
     <header class="page-header">
-        <h2>Voeg hier uw nieuwe producten toe!</h2>
+        <h2>Bekijk hier uw wedstrijd data!</h2>
     </header>
 
     <ul class="nav nav-tabs" id="filter" role="tablist">
@@ -47,25 +47,19 @@ require ('header.php');
 
             // Userinput
             $page = isset($_GET['page'])?(int)$_GET['page'] : 1;
-            $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=5 ?(int)$_GET['per-page'] : 5;
+            $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=4 ?(int)$_GET['per-page'] : 4;
 
             //Positioning
             $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
             //SQL
-            $matches = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_matches LIMIT {$start},{$perPage}");
+            $matches = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_matches WHERE isPlayed = FALSE LIMIT {$start},{$perPage}");
             $matches->execute();
             $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
-
-//            echo '$matches:';
-//            var_dump($matches);
 
             $teams = $db_conn->prepare ("SELECT * FROM tbl_teams");
             $teams->execute();
             $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
-
-//            echo '$teams:';
-//            var_dump($teams);
 
             $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
             $pages = ceil($total /$perPage);
@@ -80,15 +74,13 @@ require ('header.php');
                     $name_team_a = $teams[$match['team_id_a']]['name'];
                     $name_team_b = $teams[$match['team_id_b']]['name'];
 
+
                     echo "<ul class=\"agenda-item\">
-                          <form action=\"../app/adjust_form.php\" method='\"POST\"'>
+                          <form action=\"adjust_game.php\" method=\"POST\">
                           <input type=\"hidden\" name=\"adjust\" value=\"{$match['id']}\">
                           <input class=\"adjust\" type=\"submit\" value=\"adjust\">
                              </form>
                           <li>$name_team_a - $name_team_b</li>
-                          <form action=\"../app/delete_manager.php\" method='\"POST\"'>
-                          <input type=\"hidden\" name=\"delete\" value=\"{$match['id']}\">
-                          <input class=\"delete\" type=\"submit\" value=\"delete\">
                           </form>
                           </ul>";
                 }
@@ -102,8 +94,168 @@ require ('header.php');
             </div>
         </div>
         <div class="tab-pane fade" id="results">
+            <?php
+
+            // Userinput
+            $page = isset($_GET['page'])?(int)$_GET['page'] : 1;
+            $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=4 ?(int)$_GET['per-page'] : 4;
+
+            //Positioning
+            $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+            //SQL
+            $matches = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_matches WHERE isPlayed = TRUE LIMIT {$start},{$perPage}");
+            $matches->execute();
+            $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
+
+            $teams = $db_conn->prepare ("SELECT * FROM tbl_teams");
+            $teams->execute();
+            $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
+
+            $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+            $pages = ceil($total /$perPage);
+            ?>
+
+            <ul class="list-group">
+                <?php
+                foreach ($matches as $match)
+                {
+                    $id="{$match['id']}";
+
+                    $name_team_a = $teams[$match['team_id_a']]['name'];
+                    $name_team_b = $teams[$match['team_id_b']]['name'];
+
+                    $matchA = $match['score_team_a'];
+                    $matchB = $match['score_team_b'];
+
+                    echo ">
+                             </form>
+                          <li>$name_team_a {.$matchA.} - $name_team_b {.$matchB.}</li>
+                          </form>
+                          </ul>";
+                }
+
+                ?>
+            </ul>
+            <div class="pagenation">
+                <?php  for ($x =1; $x <= $pages; $x++) :?>
+                    <a href="?page=<?php echo $x; ?>&per-page=<?php echo $perPage ?>"><?php  echo $x; ?></a>
+                <?php endfor; ?>
+            </div>
         </div>
         <div class="tab-pane fade" id="poule-results">
+            <div class="row">
+                <div class="col col-lg-3 col-sm-3 col-md-3">
+
+                    <?php
+                    $pouleA = $db_conn->prepare ("SELECT * FROM tbl_poules WHERE naam = 'Poule A'");
+                    $pouleA->execute();
+                    $pouleA = $pouleA->fetchAll(PDO::FETCH_ASSOC);
+
+                    $teamsPoulesA = $db_conn->prepare("SELECT * FROM tbl_teams WHERE poule_id = 1 ORDER BY points DESC");
+                    $teamsPoulesA->execute();
+                    $teamsPoulesA = $teamsPoulesA->fetchAll(PDO::FETCH_ASSOC);
+
+                    echo "<h2>{$pouleA[0]['naam']}</h2>";
+
+                    echo "  <table class=\"table\">
+                            <tr>
+                            <th>Team</th>
+                            <th>Points</th> 
+                            </tr>";
+
+                    foreach($teamsPoulesA as $teams){
+                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td></tr>";
+                    }
+
+                    echo "</table>";
+                    ?>
+
+
+                </div>
+                <div class="col col-lg-3 col-sm-3 col-md-3">
+                    <?php
+                    $pouleB = $db_conn->prepare ("SELECT * FROM tbl_poules WHERE naam = 'Poule B'");
+                    $pouleB->execute();
+                    $pouleB = $pouleB->fetchAll(PDO::FETCH_ASSOC);
+
+                    $teamsPoulesB = $db_conn->prepare("SELECT * FROM tbl_teams WHERE poule_id = 2 ORDER BY points DESC");
+                    $teamsPoulesB->execute();
+                    $teamsPoulesB = $teamsPoulesB->fetchAll(PDO::FETCH_ASSOC);
+
+                    echo "<h2>{$pouleB[0]['naam']}</h2>";
+
+                    echo "  <table class=\"table\">
+                            <tr>
+                            <th>Team</th>
+                            <th>Points</th> 
+                            </tr>";
+
+                    foreach($teamsPoulesB as $teams){
+                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td></tr>";
+                    }
+
+                    echo "</table>";
+                    ?>
+
+
+                </div>
+                <div class="col col-lg-3 col-sm-3 col-md-3">
+                    <?php
+                    $pouleC = $db_conn->prepare ("SELECT * FROM tbl_poules WHERE naam = 'Poule C'");
+                    $pouleC->execute();
+                    $pouleC = $pouleC->fetchAll(PDO::FETCH_ASSOC);
+
+
+                    $teamsPoulesC = $db_conn->prepare("SELECT * FROM tbl_teams WHERE poule_id = 3 ORDER BY points DESC");
+                    $teamsPoulesC->execute();
+                    $teamsPoulesC = $teamsPoulesC->fetchAll(PDO::FETCH_ASSOC);
+
+                    echo "<h2>{$pouleC[0]['naam']}</h2>";
+
+                    echo "  <table class=\"table\">
+                            <tr>
+                            <th>Team</th>
+                            <th>Points</th> 
+                            </tr>";
+
+                    foreach($teamsPoulesC as $teams){
+                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td></tr>";
+                    }
+
+                    echo "</table>";
+                    ?>
+
+                </div>
+
+                <div class="col col-lg-3 col-sm-3 col-md-3">
+                    <?php
+                    $pouleD = $db_conn->prepare ("SELECT * FROM tbl_poules WHERE naam = 'Poule D'");
+                    $pouleD->execute();
+                    $pouleD = $pouleD->fetchAll(PDO::FETCH_ASSOC);
+
+
+                    $teamsPoulesD = $db_conn->prepare("SELECT * FROM tbl_teams WHERE poule_id = 4 ORDER BY points DESC");
+                    $teamsPoulesD->execute();
+                    $teamsPoulesD = $teamsPoulesD->fetchAll(PDO::FETCH_ASSOC);
+
+                    echo "<h2>{$pouleD[0]['naam']}</h2>";
+
+                    echo "  <table class=\"table\">
+                            <tr>
+                            <th>Team</th>
+                            <th>Points</th> 
+                            </tr>";
+
+                    foreach($teamsPoulesD as $teams){
+                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td></tr>";
+                    }
+
+                    echo "</table>";
+                    ?>
+
+                </div>
+            </div>
         </div>
     </div>
 

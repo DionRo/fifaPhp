@@ -23,7 +23,7 @@ require ('../app/database.php');
         <li role="presentation"><a href="beheer.php">Beheer</a></li>
         <li role="presentation"><a href="createTeam.php">Teams</a></li>
         <li role="presentation"><a href="createPlayer.php">Spelers</a></li>
-        <li role="presentation"><a href="createGame.php">Maak Schema</a></li>
+        <li role="presentation"><a href="createGame.php">Wedstrijd data</a></li>
         <?php
             if ( $_SESSION['adminLevel'] == "2" ) {
                 echo "
@@ -97,12 +97,12 @@ if (isset($_GET['message'])!= null )
             {
                 $id="{$user['id']}";
                 echo "<ul class=\"agenda-item\">
-                          <form action=\"../app/adjust_form.php\" method='\"POST\"'>
+                          <form action=\"../app/adjust_game.php\" method=\"POST\">
                           <input type=\"hidden\" name=\"adjust\" value=\"{$user['id']}\">
                           <input class=\"adjust\" type=\"submit\" value=\"adjust\">
                              </form>
                           <li>Gebruikersemail {{$user['email']}}</li>
-                          <form action=\"../app/delete_manager.php\" method='\"POST\"'>
+                          <form action=\"../app/delete_manager.php\" method=\"POST\">
                           <input type=\"hidden\" name=\"delete\" value=\"{$user['id']}\">
                           <input class=\"delete\" type=\"submit\" value=\"delete\">
                           </form>
