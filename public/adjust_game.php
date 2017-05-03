@@ -87,7 +87,7 @@ $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
                 ?>
 
                 <?php
-                $players = $db_conn->prepare( "SELECT * FROM tbl_players WHERE team_");
+                $players = $db_conn->prepare( "SELECT * FROM tbl_players");
                 $players->execute();
                 $players = $players->fetchAll(PDO::FETCH_ASSOC);
 

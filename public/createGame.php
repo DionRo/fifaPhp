@@ -128,7 +128,7 @@ require ('header.php');
                     $matchA = $match['score_team_a'];
                     $matchB = $match['score_team_b'];
 
-                    echo ">
+                    echo "<ul class=\"agenda-item\">  
                              </form>
                           <li>$name_team_a {.$matchA.} - $name_team_b {.$matchB.}</li>
                           </form>
