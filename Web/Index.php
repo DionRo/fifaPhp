@@ -14,36 +14,34 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="Main_Web_CSS">
+    <script type="text/javascript" src="Scripts/scroll.js"></script>
+    <script type="text/javascript" !src="Scripts/SlideShow.js"></script>
+    <link rel="stylesheet" href="Style/Main_Web_CSS.css">
     <title>FiFa Toernooi</title>
 </head>
 <body>
-<header>
+<header id="Top-Header">
 
-    <div class="logo">
-
-        <img src="Ball.jpg" alt="a scorer ball">
-        <div class="slogan">
-
-            <p>FIFA</p>
-            <p>Radius College Toernooi</p>
+    <div class="main-head" id="main-head">
+        <div class="logo">
+            <h1 ">FIFA Radius College Toernooi</h1>
         </div>
+
+        <nav>
+
+            <a href="">Home</a>
+            <a href="#intro">Intro</a>
+            <a href="#Group">Groep 3</a>
+            <a href="#Tournement">Toernooi</a>
+            <a href="">Teams</a>
+            <a href="../index.php">Login</a>
+        </nav>
     </div>
-
-    <nav>
-
-        <a href="">Home</a>
-        <a href="">Intro</a>
-        <a href="">Groep 3</a>
-        <a href="">Toernooi</a>
-        <a href="">Teams</a>
-        <a href="../index.php">Login</a>
-    </nav>
 </header>
 
 <div class="container">
 
-    <div class="intro">
+    <div class="intro" id="intro">
         <h2>Welcome</h2>
 
         <div class="Content">
@@ -60,9 +58,34 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam aperiam cupiditate debitis dignissimos dolor doloremque doloribus, eveniet, iusto nostrum perferendis possimus quibusdam repudiandae saepe totam unde vitae! Explicabo, mollitia.</p>
             </div>
         </div>
+
+        <h2>Some Picture</h2>
+
+        <div class="w3-content w3-section" style="max-width:500px" style="max-height: 300px">
+            <img class="mySlides" src="Img/Slideshow/slide_01.jpg" style="width:100%">
+            <img class="mySlides" src="Img/Slideshow/slide_02.jpg" style="width:100%">
+            <img class="mySlides" src="Img/Slideshow/slide_03.jpg" style="width:100%">
+        </div>
+
+        <script !src="">
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) {myIndex = 1}
+                x[myIndex-1].style.display = "block";
+                setTimeout(carousel, 2000); // Change image every 2 seconds
+            }
+        </script>
     </div>
 
-    <div class="Group">
+    <div class="Group" id="Group">
         <h2>Groep 3</h2>
 
         <div class="information">
@@ -80,7 +103,7 @@
                 <div class="member">
 
                     <h4>Name</h4>
-                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+                    <img src="Img/Profile_Picture/Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
                     <div class="describe_Member">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
@@ -90,7 +113,7 @@
                 <div class="member">
 
                     <h4>Name</h4>
-                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+                    <img src="Img/Profile_Picture/Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
                     <div class="describe_Member">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
@@ -100,7 +123,7 @@
                 <div class="member">
 
                     <h4>Name</h4>
-                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+                    <img src="Img/Profile_Picture/Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
                     <div class="describe_Member">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
@@ -110,7 +133,7 @@
         </div>
     </div>
 
-    <div class="Tournament">
+    <div class="Tournament" id="Tournement">
 
         <h2>The Big Tournement</h2>
 
