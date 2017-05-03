@@ -14,36 +14,32 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="Main_Web_CSS">
+    <link rel="stylesheet" href="style/Main_Web_CSS.css">
     <title>FiFa Toernooi</title>
 </head>
 <body>
 <header>
 
-    <div class="logo">
-
-        <img src="Ball.jpg" alt="a scorer ball">
-        <div class="slogan">
-
-            <p>FIFA</p>
-            <p>Radius College Toernooi</p>
+    <div class="main-head">
+        <div class="logo">
+            <h1>FIFA Radius College Toernooi</h1>
         </div>
+
+        <nav>
+
+            <a href="">Home</a>
+            <a href="#intro">Intro</a>
+            <a href="#Group">Groep 3</a>
+            <a href="#Tournement">Toernooi</a>
+            <a href="">Teams</a>
+            <a href="../index.php">Login</a>
+        </nav>
     </div>
-
-    <nav>
-
-        <a href="">Home</a>
-        <a href="">Intro</a>
-        <a href="">Groep 3</a>
-        <a href="">Toernooi</a>
-        <a href="">Teams</a>
-        <a href="../index.php">Login</a>
-    </nav>
 </header>
 
 <div class="container">
 
-    <div class="intro">
+    <div class="intro" id="intro">
         <h2>Welcome</h2>
 
         <div class="Content">
@@ -62,7 +58,7 @@
         </div>
     </div>
 
-    <div class="Group">
+    <div class="Group" id="Group">
         <h2>Groep 3</h2>
 
         <div class="information">
@@ -80,7 +76,7 @@
                 <div class="member">
 
                     <h4>Name</h4>
-                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+                    <img src="Img/Profile_Picture/Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
                     <div class="describe_Member">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
@@ -90,7 +86,7 @@
                 <div class="member">
 
                     <h4>Name</h4>
-                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+                    <img src="Img/Profile_Picture/Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
                     <div class="describe_Member">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
@@ -100,7 +96,7 @@
                 <div class="member">
 
                     <h4>Name</h4>
-                    <img src="Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
+                    <img src="Img/Profile_Picture/Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
                     <div class="describe_Member">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
@@ -110,7 +106,7 @@
         </div>
     </div>
 
-    <div class="Tournament">
+    <div class="Tournament" id="Tournement">
 
         <h2>The Big Tournement</h2>
 
