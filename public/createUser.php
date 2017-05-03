@@ -23,8 +23,7 @@ require ('../app/database.php');
         <li role="presentation"><a href="beheer.php">Beheer</a></li>
         <li role="presentation"><a href="createTeam.php">Teams</a></li>
         <li role="presentation"><a href="createPlayer.php">Spelers</a></li>
-        <li role="presentation"><a href="createPoules.php">Poules</a></li>
-        <li role="presentation"><a href="createSchema.php">Maak Schema</a></li>
+        <li role="presentation"><a href="createGame.php">Maak Schema</a></li>
         <?php
             if ( $_SESSION['adminLevel'] == "2" ) {
                 echo "

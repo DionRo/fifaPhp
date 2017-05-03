@@ -16,8 +16,7 @@ require ('../app/database.php');
         <li role="presentation"><a href="beheer.php">Beheer</a></li>
         <li role="presentation"><a href="createTeam.php">Teams</a></li>
         <li role="presentation" class="active"><a href="createPlayer.php">Spelers</a></li>
-        <li role="presentation"><a href="createPoules.php">Poules</a></li>
-        <li role="presentation"><a href="createSchema.php">Maak Schema</a></li>
+        <li role="presentation"><a href="createGame.php">Maak Schema</a></li>
         <?php
         if ( $_SESSION['adminLevel'] == "2" ) {
             echo "
@@ -91,7 +90,7 @@ if (isset($_GET['message'])!= null )
 
     // Userinput
     $page = isset($_GET['page'])?(int)$_GET['page'] : 1;
-    $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=20 ?(int)$_GET['per-page'] : 20;
+    $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=5 ?(int)$_GET['per-page'] : 5;
 
     //Positioning
     $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
