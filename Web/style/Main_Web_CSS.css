@@ -72,7 +72,7 @@ a {
 }
 
 .main-head:hover{
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 nav{
@@ -82,6 +82,7 @@ nav{
 }
 
 nav a{
+    background: black;
     border: solid 1px;
     box-shadow: 10px 10px 75px white;
     margin: 5px;
@@ -102,27 +103,20 @@ nav a{
 
 .intro{
     /*background-image: url("../Img/Background/Back_01.jpg");*/
-    height: 1080px;
+
 }
 
 .Content{
     display: flex;
-    flex-direction: column;
-    margin-top: 12.5%;
+    flex-direction: row;
 }
 
 .intro .description, .intro .extra{
     margin: 5%;
-
 }
 
-.intro .description p, .intro .extra p{
-    opacity: 0.1;
-
-}
-
-.intro .description p:hover, .intro .extra p:hover{
-    opacity: 1;
+.mySlides{
+    display:none;
 }
 
 /*----------------------------------------Group----------------------------------------*/

@@ -14,15 +14,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="scripts/scroll.js"></script>
     <link rel="stylesheet" href="style/Main_Web_CSS.css">
     <title>FiFa Toernooi</title>
 </head>
 <body>
-<header>
+<header id="Top-Header">
 
-    <div class="main-head">
+    <div class="main-head" id="main-head">
         <div class="logo">
-            <h1>FIFA Radius College Toernooi</h1>
+            <h1 ">FIFA Radius College Toernooi</h1>
         </div>
 
         <nav>
@@ -56,6 +57,32 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam aperiam cupiditate debitis dignissimos dolor doloremque doloribus, eveniet, iusto nostrum perferendis possimus quibusdam repudiandae saepe totam unde vitae! Explicabo, mollitia.</p>
             </div>
         </div>
+
+        <h2>Some Picture</h2>
+
+        <div class="w3-content w3-section" style="max-width:500px" style="max-height: 300px">
+            <img class="mySlides" src="Img/Slideshow/slide_01.jpg" style="width:100%">
+            <img class="mySlides" src="Img/Slideshow/slide_02.jpg" style="width:100%">
+            <img class="mySlides" src="Img/Slideshow/slide_03.jpg" style="width:100%">
+        </div>
+
+        <script>
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length) {myIndex = 1}
+                x[myIndex-1].style.display = "block";
+                setTimeout(carousel, 2000); // Change image every 2 seconds
+            }
+        </script>
+
     </div>
 
     <div class="Group" id="Group">
