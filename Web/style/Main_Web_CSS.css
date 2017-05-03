@@ -2,12 +2,12 @@
 
 @font-face {
     font-family: 'Schluber';
-    src: url('../font/Schluber.eot');
-    src: url('../font/Schluber.eot?#iefix') format('embedded-opentype'),
-    url('../font/Schluber.woff2') format('woff2'),
-    url('../font/Schluber.woff') format('woff'),
-    url('../font/Schluber.ttf') format('truetype'),
-    url('../font/Schluber.svg#font/Schluber') format('svg');
+    src: url('../Font/Schluber.eot');
+    src: url('../Font/Schluber.eot?#iefix') format('embedded-opentype'),
+    url('../Font/Schluber.woff2') format('woff2'),
+    url('../Font/Schluber.woff') format('woff'),
+    url('../Font/Schluber.ttf') format('truetype'),
+    url('../Font/Schluber.svg#font/Schluber') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -116,7 +116,8 @@ nav a{
 }
 
 .mySlides{
-    display:none;
+    display:flex;
+    align-items: center;
 }
 
 /*----------------------------------------Group----------------------------------------*/

@@ -14,8 +14,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="scripts/scroll.js"></script>
-    <link rel="stylesheet" href="style/Main_Web_CSS.css">
+    <script type="text/javascript" src="Scripts/scroll.js"></script>
+    <script type="text/javascript" !src="Scripts/SlideShow.js"></script>
+    <link rel="stylesheet" href="Style/Main_Web_CSS.css">
     <title>FiFa Toernooi</title>
 </head>
 <body>
@@ -66,7 +67,7 @@
             <img class="mySlides" src="Img/Slideshow/slide_03.jpg" style="width:100%">
         </div>
 
-        <script>
+        <script !src="">
             var myIndex = 0;
             carousel();
 
@@ -82,7 +83,6 @@
                 setTimeout(carousel, 2000); // Change image every 2 seconds
             }
         </script>
-
     </div>
 
     <div class="Group" id="Group">
