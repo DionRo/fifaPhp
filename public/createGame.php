@@ -76,7 +76,7 @@ require ('header.php');
 
 
                     echo "<ul class=\"agenda-item\">
-                          <form action=\"adjust_game.php\" method=\"POST\">
+                          <form action=\"adjust_game.php\" method=\"GET\">
                           <input type=\"hidden\" name=\"adjust\" value=\"{$match['id']}\">
                           <input class=\"adjust\" type=\"submit\" value=\"adjust\">
                              </form>

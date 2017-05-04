@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 02 mei 2017 om 18:38
+-- Gegenereerd op: 04 mei 2017 om 09:04
 -- Serverversie: 10.1.21-MariaDB
 -- PHP-versie: 5.6.30
 
@@ -30,8 +30,9 @@ CREATE TABLE `tbl_matches` (
   `id` int(10) UNSIGNED NOT NULL,
   `team_id_a` int(10) UNSIGNED NOT NULL,
   `team_id_b` int(10) UNSIGNED NOT NULL,
-  `score_team_a` int(10) UNSIGNED DEFAULT NULL,
-  `score_team_b` int(10) UNSIGNED DEFAULT NULL,
+  `score_team_a` int(10) UNSIGNED DEFAULT '0',
+  `score_team_b` int(10) UNSIGNED DEFAULT '0',
+  `isPlayed` tinyint(1) NOT NULL DEFAULT '0',
   `start_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
@@ -39,11 +40,11 @@ CREATE TABLE `tbl_matches` (
 -- Gegevens worden geëxporteerd voor tabel `tbl_matches`
 --
 
-INSERT INTO `tbl_matches` (`id`, `team_id_a`, `team_id_b`, `score_team_a`, `score_team_b`, `start_time`) VALUES
-(1, 1, 2, 2, 4, '2017-04-13 18:00:00'),
-(2, 2, 1, NULL, NULL, '2017-05-04 00:00:00'),
-(3, 1, 2, 2, 2, '0000-00-00 00:00:00'),
-(4, 1, 3, NULL, NULL, '0000-00-00 00:00:00');
+INSERT INTO `tbl_matches` (`id`, `team_id_a`, `team_id_b`, `score_team_a`, `score_team_b`, `isPlayed`, `start_time`) VALUES
+(1, 1, 2, 2, 4, 1, '2017-04-13 18:00:00'),
+(2, 2, 1, 0, 0, 0, '2017-05-04 00:00:00'),
+(3, 1, 2, 2, 2, 1, '0000-00-00 00:00:00'),
+(4, 1, 3, 0, 0, 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -119,6 +120,7 @@ CREATE TABLE `tbl_teams` (
   `id` int(11) UNSIGNED NOT NULL,
   `poule_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `points` int(3) DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -127,14 +129,15 @@ CREATE TABLE `tbl_teams` (
 -- Gegevens worden geëxporteerd voor tabel `tbl_teams`
 --
 
-INSERT INTO `tbl_teams` (`id`, `poule_id`, `name`, `created_at`, `deleted_at`) VALUES
-(1, 1, 'Ajax', '2017-04-13 09:42:45', NULL),
-(2, 1, 'PSV', '2017-04-13 09:42:45', NULL),
-(3, 10, 'Test', '2017-04-20 16:05:01', NULL),
-(4, 5, 'Real Madrid', '2017-04-20 16:11:12', NULL),
-(5, 2, 'LeXXor', '2017-04-21 08:47:53', NULL),
-(6, 1, 'LeXXoRR', '2017-05-01 15:05:37', NULL),
-(7, 7, 'Dionnie', '2017-05-01 15:53:39', NULL);
+INSERT INTO `tbl_teams` (`id`, `poule_id`, `name`, `points`, `created_at`, `deleted_at`) VALUES
+(1, 1, 'Ajax', 3, '2017-04-13 09:42:45', NULL),
+(2, 1, 'PSV', 6, '2017-04-13 09:42:45', NULL),
+(3, 2, 'Test', 0, '2017-04-20 16:05:01', NULL),
+(4, 3, 'Real Madrid', 0, '2017-04-20 16:11:12', NULL),
+(5, 2, 'LeXXor', 0, '2017-04-21 08:47:53', NULL),
+(6, 3, 'LeXXoRR', 8, '2017-05-01 15:05:37', NULL),
+(7, 4, 'Dionnie', 6, '2017-05-01 15:53:39', NULL),
+(8, 4, 'Hondjes', 4, '2017-05-03 14:14:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -224,7 +227,7 @@ ALTER TABLE `tbl_poules`
 -- AUTO_INCREMENT voor een tabel `tbl_teams`
 --
 ALTER TABLE `tbl_teams`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT voor een tabel `tbl_users`
 --
