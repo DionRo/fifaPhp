@@ -67,24 +67,47 @@ require ('header.php');
 
             <ul class="list-group">
                 <?php
-                foreach ($matches as $match)
-                {
-                    $id="{$match['id']}";
+                    foreach ($matches as $match)
+                    {
+                        $id = $match['id'];
 
-                    $name_team_a = $teams[$match['team_id_a']]['name'];
-                    $name_team_b = $teams[$match['team_id_b']]['name'];
+                        $team_id_a = $match['team_id_a'];
+                        $team_id_b = $match['team_id_b'];
 
+                        foreach ($teams as $team) {
+                            if ($team_id_a == $team['id']) {
+                                $name_team_a    = $team['name'];
+                                $id_team_a      = $team['id'];
+                            }
+                            else if ($team_id_b == $team['id'])
+                            {
+                                $name_team_b = $team['name'];
+                                $id_team_b = $team['id'];
+                            }
+                            else
+                            {
+                                if (!isset($name_team_a) && !isset($id_team_a)) {
+                                    $name_team_a    = "ERROR";
+                                    $id_team_a      = "-1";
+                                }
+                                else if (!isset($name_team_b) && !isset($id_team_b)) {
+                                    $name_team_b    = "ERROR";
+                                    $id_team_b      = "-1";
+                                }
+                            }
+                        }
 
-                    echo "<ul class=\"agenda-item\">
-                          <form action=\"adjust_game.php\" method=\"GET\">
-                          <input type=\"hidden\" name=\"adjust\" value=\"{$match['id']}\">
-                          <input class=\"adjust\" type=\"submit\" value=\"adjust\">
-                             </form>
-                          <li>$name_team_a - $name_team_b</li>
-                          </form>
-                          </ul>";
-                }
-
+                        echo "<ul class=\"agenda-item\">
+                                  <form action=\"adjust_game.php\" method=\"GET\">
+                                      <input type=\"hidden\" name=\"adjust\" value=\"{$match['id']}\">
+                                      <input class=\"adjust\" type=\"submit\" value=\"adjust\">
+                                         </form>
+                                      <li>
+                                        (MATCH: $id) $name_team_a (TEAM_ID: $id_team_a) - $name_team_b (TEAM_ID: $id_team_b)
+                                      </li>
+                                  </form>
+                              </ul>";
+                    }
                 ?>
             </ul>
             <div class="pagenation">
