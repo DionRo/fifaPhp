@@ -85,8 +85,8 @@ $players->execute();
 $players = $players->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="row">
-    <div class="col col-lg-3"></div>
-    <div class="form-group col col-lg-3">
+    <div class="col col-lg-2"></div>
+    <div class="form-group col col-lg-5">
         <label for="player">Players <?php echo $name_team_a ?></label>
         <form  action="../app/adjust_game_manager.php" method="POST" class="form-inline">
             <select  class="form-control" name="player">
@@ -104,6 +104,7 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
             <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
             <input type="hidden" name="team" value="a">
             <input value="add" type="submit" name="add" class="btn btn-danger">
+            <input value="remove" type="submit" name="remove" class="btn btn-danger">
         </form>
     </div>
     <?php
@@ -111,9 +112,7 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
     $players->execute();
     $players = $players->fetchAll(PDO::FETCH_ASSOC);
     ?>
-
-    <div class="col col-lg-1"></div>
-    <div class="form-group col col-lg-3">
+    <div class="form-group col col-lg-5">
         <label for="player">Players <?php echo $name_team_b ?></label>
         <form  action="../app/adjust_game_manager.php" method="POST" class="form-inline">
             <select  class="form-control" name="player">
@@ -131,6 +130,7 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
             <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
             <input type="hidden" name="team" value="b">
             <input value="add" type="submit" name="add" class="btn btn-danger">
+            <input value="remove" type="submit" name="remove" class="btn btn-danger">
         </form>
     </div>
 </div>

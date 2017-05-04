@@ -47,7 +47,7 @@ require ('header.php');
 
             // Userinput
             $page = isset($_GET['page'])?(int)$_GET['page'] : 1;
-            $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=4 ?(int)$_GET['per-page'] : 4;
+            $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=8 ?(int)$_GET['per-page'] : 8;
 
             //Positioning
             $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
@@ -98,7 +98,7 @@ require ('header.php');
 
             // Userinput
             $page = isset($_GET['page'])?(int)$_GET['page'] : 1;
-            $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=4 ?(int)$_GET['per-page'] : 4;
+            $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=8 ?(int)$_GET['per-page'] : 8;
 
             //Positioning
             $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
@@ -256,9 +256,33 @@ require ('header.php');
 
                 </div>
             </div>
+            <div class="row">
+                <div class="col col-lg-5"></div>
+                <div class="col col-lg-3 col-sm-3 col-md-3">
+                    <?php
+
+                    $tops = $db_conn->prepare("SELECT * FROM tbl_players ORDER BY goals DESC LIMIT 5");
+                    $tops->execute();
+                    $tops = $tops->fetchAll(PDO::FETCH_ASSOC);
+
+                    echo "<h2>Topscoorders</h2>";
+
+                    echo "  <table class=\"table\">
+                            <tr>
+                            <th>Spelernaam</th>
+                            <th>Aantal goals</th> 
+                            </tr>";
+
+                    foreach($tops as $top){
+                        echo "<tr><td>{$top['first_name']}{$top['last_name']}</td> <td>{$top['goals']}</td></tr>";
+                    }
+
+                    echo "</table>";
+                    ?>
+            </div>
         </div>
     </div>
-
+</div>
     <?php
     if (isset($_GET['message'])!= null )
     {
