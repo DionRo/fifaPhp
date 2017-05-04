@@ -70,8 +70,3 @@ strong{
 .agenda-item:hover .adjust {
     display: block;
 }
-
-#submit-button{
-    display: block;
-    margin: 0 auto;
-}
