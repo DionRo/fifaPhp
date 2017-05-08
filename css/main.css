@@ -67,6 +67,6 @@ strong{
 .agenda-item:hover .delete{
     display: block;
 }
-.agenda-item:hover .adjust{
+.agenda-item:hover .adjust {
     display: block;
 }

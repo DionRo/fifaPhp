@@ -1,8 +1,6 @@
 <?php
 require('../public/header.php');
 require('database.php');
-?>
-<?php
 
       $teamName         = trim($_POST['nameTeam']);
       $pouleID          = trim($_POST['pouleID']);
