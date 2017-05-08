@@ -14,11 +14,11 @@
 
 body{
     background-image: url("../Img/Background/Background_Placeholder.jpg");
+    background-size:auto;
     color: #FFFFFF;
     font-family: 'Schluber';
     text-align: center;
 }
-
 
 h1{
     font-size: 50px;
@@ -71,6 +71,20 @@ a {
     opacity: 0.1;
 }
 
+@media screen and (max-width: 860px){
+    .main-head{
+        height: 125px;
+    }
+
+    header h1{
+        font-size: 37.5px;
+    }
+
+    header nav a{
+        visibility: hidden;
+    }
+}
+
 .main-head:hover{
     opacity: 1 !important;
 }
@@ -103,28 +117,46 @@ nav a{
 
 .intro{
     /*background-image: url("../Img/Background/Back_01.jpg");*/
-
 }
 
 .Content{
     display: flex;
-    flex-direction: row;
+    justify-content: center;
 }
+
+@media screen and (max-width: 720px){
+    .Content{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 
 .intro .description, .intro .extra{
     margin: 5%;
+    max-width: 750px;
 }
 
-.mySlides{
-    display:flex;
-    align-items: center;
+.intro .Content .description p{
+    text-align: left;
+}
+
+.intro .extra ul{
+    text-align: left;
+    list-style: none;
+}
+
+@media screen and (max-width: 720px){
+
+    .intro .Content .description p{
+        text-align: center;
+    }
 }
 
 /*----------------------------------------Group----------------------------------------*/
 
 .Group{
     /*background-image: url("../Img/Background/Back_02.jpg");*/
-    height: 720px;
 }
 
 .Group h2{
@@ -141,6 +173,15 @@ nav a{
     display: flex;
     justify-content: center;
     margin: 35px;
+}
+
+@media screen and (max-width: 720px){
+    .team{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .member{
