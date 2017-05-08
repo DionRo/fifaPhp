@@ -99,12 +99,12 @@ if (isset($_GET['message'])!= null )
             {
                 $id="{$team['id']}";
                 echo "<ul class=\"agenda-item\">
-                          <form action=\"../app/adjust_game.php\" method=\"POST\">
+                          <form action=\"   adjust_team.php\" method=\"POST\">
                           <input type=\"hidden\" name=\"adjust\" value=\"{$team['id']}\">
                           <input class=\"adjust\" type=\"submit\" value=\"adjust\">
                              </form>
-                          <li>Teamnaam {{$team['name']}}</li>
-                          <form action=\"../app/delete_manager.php\" method=\"POST\">
+                          <li>{$team['name']}</li>
+                          <form action=\"../app/delete_team_manager.php\" method=\"POST\">
                           <input type=\"hidden\" name=\"delete\" value=\"{$team['id']}\">
                           <input class=\"delete\" type=\"submit\" value=\"delete\">
                           </form>
