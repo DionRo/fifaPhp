@@ -34,8 +34,17 @@ $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
 foreach($matches as $match)
 {
 $id = "{$match['id']}";
-$name_team_a = $teams[$match['team_id_a']]['name'];
-$name_team_b = $teams[$match['team_id_b']]['name'];
+
+    foreach ( $teams as $team ) {
+        if ( $team['id'] == $match['team_id_a'] ) {
+            $name_team_a = $team['name'];
+        } else if ( $team['id'] == $match['team_id_b'] ) {
+            $name_team_b = $team['name'];
+        }
+    }
+
+//    $name_team_a = $teams[$match['team_id_a']]['name'];
+//      $name_team_b = $teams[$match['team_id_b']]['name'];
 
 $team_id_a = intval($match['team_id_a']);
 $team_id_b = intval($match['team_id_b']);
