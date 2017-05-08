@@ -100,6 +100,8 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
                 }
 
                 ?>
+
+                
             </select>
             <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
             <input type="hidden" name="team" value="a">
