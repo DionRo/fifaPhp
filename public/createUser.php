@@ -97,12 +97,12 @@ if (isset($_GET['message'])!= null )
             {
                 $id="{$user['id']}";
                 echo "<ul class=\"agenda-item\">
-                          <form action=\"../app/adjust_game.php\" method=\"POST\">
+                          <form action=\"adjust_user.php\" method=\"POST\">
                           <input type=\"hidden\" name=\"adjust\" value=\"{$user['id']}\">
                           <input class=\"adjust\" type=\"submit\" value=\"adjust\">
                              </form>
                           <li>Gebruikersemail {{$user['email']}}</li>
-                          <form action=\"../app/delete_manager.php\" method=\"POST\">
+                          <form action=\"../app/delete_user_manager.php\" method=\"POST\">
                           <input type=\"hidden\" name=\"delete\" value=\"{$user['id']}\">
                           <input class=\"delete\" type=\"submit\" value=\"delete\">
                           </form>
