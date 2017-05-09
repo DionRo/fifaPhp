@@ -20,30 +20,16 @@
 
 require ("database.php");
 
-
-
 if (isset($_POST['delete'])){
 
     $deleteId = $_POST['delete'];
-
-
-
     $sqlDel = "DELETE FROM tbl_players WHERE id = '$deleteId'";
-
     $db_conn->query($sqlDel);
 
-
-
     $message = '<strong>Item deleted</strong>';
-
 }
 
 else{
-
     $message = '<strong>Failed to delete</strong>';
-
 }
-
-
-
 header("Location: ../public/createPlayer.php?message=$message");
