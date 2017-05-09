@@ -9,8 +9,6 @@
 require ('../app/database.php');
 
 if(isset($_POST['add'])){
-    $score_team;
-
     $match_id   = $_POST['match_id'];   // 2
     $player     = $_POST['player'];     // 5
     $team       = $_POST['team'];       // a
@@ -51,8 +49,6 @@ if(isset($_POST['add'])){
     $stmt->execute();
 
 }elseif (isset($_POST['remove'])){
-    $score_team;
-
     $match_id   = $_POST['match_id'];
     $player     = $_POST['player'];
     $team       = $_POST['team'];
