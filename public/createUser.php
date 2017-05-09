@@ -102,11 +102,7 @@ if (isset($_GET['message'])!= null )
                           <input class=\"adjust\" type=\"submit\" value=\"adjust\">
                              </form>
                           <li>Gebruikersemail {{$user['email']}}</li>
-<<<<<<< Updated upstream
                           <form action=\"../app/delete_user_manager.php\" method=\"POST\">
-=======
-                          <form action=\"\" method=\"POST\">
->>>>>>> Stashed changes
                           <input type=\"hidden\" name=\"delete\" value=\"{$user['id']}\">
                           <input class=\"delete\" type=\"submit\" value=\"delete\">
                           </form>
