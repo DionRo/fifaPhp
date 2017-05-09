@@ -6,6 +6,10 @@
  * Time: 11:15 AM
  */
 session_start();
+
+$title = 'create-user';
+
+
 require ('header.php');
 
 if (!isset ($_SESSION['adminLevel']) ||  $_SESSION['adminLevel'] != "2")

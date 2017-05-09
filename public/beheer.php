@@ -18,26 +18,8 @@ if (!isset ($_SESSION['adminLevel'])  || !$_SESSION['adminLevel'])
 require ('header.php');
 require ('../app/database.php');
 
-
 ?>
-<?php
-
-    var_dump($_SESSION);
-    ?>
-<ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="beheer.php">Beheer</a></li>
-    <li role="presentation"><a href="createTeam.php">Teams</a></li>
-    <li role="presentation"><a href="createPlayer.php">Spelers</a></li>
-    <li role="presentation"><a href="createGame.php">Wedstrijd data</a></li>
-    <?php
-    if ( $_SESSION['adminLevel'] == "2" ) {
-        echo "
-                        <li role=\"presentation\"><a href=\"createUser.php\">Creeër gebruiker</a></li>
-                ";
-    }
-    ?>
-    <li role="presentation"><a href="logout.php">Logout</a></li>
-</ul>
+<?php var_dump($_SESSION); ?>
 
 <header class="page-header">
     <h2>Welkom bij de beheerpgagina van FIFA</h2>

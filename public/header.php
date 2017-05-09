@@ -1,5 +1,29 @@
 <?php
+    require_once __DIR__ . '/../app/init.php';
 
+
+    session_start();
+
+    if (!isset ($_SESSION['adminLevel'])  || !$_SESSION['adminLevel'])
+    {
+        $ErrorMessage = "<strong>U moet eerst inloggen voor dat u op deze pagina kan komen</strong>";
+        header("Location: ../index.php?message=$ErrorMessage");
+        die;
+    }
+
+    function checkActiveUrl($url)
+    {
+        $requestedUrl = $_SERVER['REQUEST_URI'];
+        $split = explode('/', $requestedUrl);
+
+        if ($requestedUrl === $url )
+        {
+            return true;
+        }
+
+        return false;
+
+    }
 ?>
 
 <!doctype html>
@@ -22,8 +46,36 @@
             integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
             crossorigin="anonymous"></script>
 
+
 </head>
 <body>
+
+
     <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <?php foreach($navMenu as $item): ?>
+                            <?php if($item['level'] <= $_SESSION['adminLevel'] ): ?>
+
+                                <li class="<?php checkActiveUrl($item['link']) ? 'active' : '' ?>" role="presentation"><a href="<?= $item['link']; ?>"> <?= $item['label']; ?> </a></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
 
 
