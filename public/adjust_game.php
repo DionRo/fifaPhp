@@ -19,8 +19,6 @@ require ('header.php');
 require ('../app/database.php');
 
 $id = $_GET['adjust'];
-var_dump($id);
-//die;
 $matches = $db_conn->prepare("SELECT * FROM tbl_matches WHERE id = $id");
 $matches->execute();
 $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
@@ -44,9 +42,6 @@ $id = "{$match['id']}";
             $name_team_b = $team['name'];
         }
     }
-
-//    $name_team_a = $teams[$match['team_id_a']]['name'];
-//      $name_team_b = $teams[$match['team_id_b']]['name'];
 
 $team_id_a = intval($match['team_id_a']);
 $team_id_b = intval($match['team_id_b']);
@@ -119,25 +114,6 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
             <input value="add" type="submit" name="add" class="btn btn-danger">
         </form>
     </div>
-    <div class="form-group col col-lg-5">
-        <label for="">Players <?php echo $name_team_a; ?></label>
-        <form action="../app/adjust_game_manager.php" method="POST">
-            <select class="form-control" name="player">
-                <?php
-                foreach($players as $player)
-                {
-                    if ( $player['goals'] > 0)
-                        echo "<option value=" . $player['id'] . ">                          
-                            <p>{$player['first_name']} {$player['last_name']}</p>        
-                            </option>";
-                }
-                ?>
-            </select>
-            <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
-            <input type="hidden" name="team" value="a">
-            <input value="remove" type="submit" name="remove" class="btn btn-danger">
-        </form>
-    </div>
     <?php
     $players = $db_conn->prepare("SELECT * FROM tbl_players WHERE team_id = $team_id_b");
     $players->execute();
@@ -163,9 +139,39 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
             <input value="add" type="submit" name="add" class="btn btn-danger">
         </form>
     </div>
+    <div class="col col-lg-2"></div>
+    <?php
+    $players = $db_conn->prepare("SELECT * FROM tbl_players WHERE team_id = $team_id_a");
+    $players->execute();
+    $players = $players->fetchAll(PDO::FETCH_ASSOC);
+    ?>
     <div class="form-group col col-lg-5">
-        <label for="">Players <?php echo $name_team_b; ?></label>
-        <form action="../app/adjust_game_manager.php" method="POST">
+        <label for="">Scoorders <?php echo $name_team_a; ?></label>
+        <form action="../app/adjust_game_manager.php" method="POST" class="form-inline" >
+            <select class="form-control" name="player">
+                <?php
+                foreach($players as $player)
+                {
+                    if ( $player['goals'] > 0)
+                        echo "<option value=" . $player['id'] . ">                          
+                            <p>{$player['first_name']} {$player['last_name']}</p>        
+                            </option>";
+                }
+                ?>
+            </select>
+            <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
+            <input type="hidden" name="team" value="b">
+            <input value="remove" type="submit" name="remove" class="btn btn-danger">
+        </form>
+    </div>
+    <?php
+    $players = $db_conn->prepare("SELECT * FROM tbl_players WHERE team_id = $team_id_b");
+    $players->execute();
+    $players = $players->fetchAll(PDO::FETCH_ASSOC);
+    ?>
+    <div class="form-group col col-lg-5">
+        <label for="">Scoorders <?php echo $name_team_b; ?></label>
+        <form action="../app/adjust_game_manager.php" method="POST" class="form-inline">
             <select class="form-control" name="player">
                 <?php
                     foreach($players as $player)
