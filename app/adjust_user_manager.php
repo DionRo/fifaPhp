@@ -1,4 +1,5 @@
 <?php
+<<<<<<< Updated upstream
     /**
      * Created by PhpStorm.
      * User: Lex
@@ -40,3 +41,11 @@
     }
 
     header("Location: ../public/createUser.php?message=$message");
+=======
+/**
+ * Created by PhpStorm.
+ * User: lexkr
+ * Date: 5/8/17
+ * Time: 16:45
+ */
+>>>>>>> Stashed changes

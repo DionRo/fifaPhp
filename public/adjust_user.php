@@ -1,6 +1,7 @@
 <?php
     /**
      * Created by PhpStorm.
+<<<<<<< Updated upstream
      * User: Lex
      * Date: 5/8/17
      * Time: 22:29
@@ -63,3 +64,38 @@
         </div>
     </form>
 
+=======
+     * User: lexkr
+     * Date: 5/8/17
+     * Time: 16:43
+     */
+
+    require_once('header.php');
+    require_once('../app/database.php');
+
+    var_dump($_POST);
+
+    $query = 'SELECT * FROM tbl_users WHERE id = :id';
+    $stmt = $db_conn->prepare($query);
+    $stmt->execute(['id' => $_POST['adjust']]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
+<form action="../app/adjust_user_manager.php">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" name="student_id" value="<?php echo $user['name'] ?>">
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" name="email" value="<?php echo $user['email'] ?>">
+    </div>
+    <div class="form-group">
+        <?php
+            if ($user['adminLevel'] == 1)
+        ?>
+        ?>
+    </div>
+
+</form>
+>>>>>>> Stashed changes
