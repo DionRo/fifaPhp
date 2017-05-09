@@ -19,6 +19,8 @@ require ('header.php');
 require ('../app/database.php');
 
 $id = $_GET['adjust'];
+var_dump($id);
+//die;
 $matches = $db_conn->prepare("SELECT * FROM tbl_matches WHERE id = $id");
 $matches->execute();
 $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
@@ -115,6 +117,24 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
             <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
             <input type="hidden" name="team" value="a">
             <input value="add" type="submit" name="add" class="btn btn-danger">
+        </form>
+    </div>
+    <div class="form-group col col-lg-5">
+        <label for="">Players <?php echo $name_team_a; ?></label>
+        <form action="../app/adjust_game_manager.php" method="POST">
+            <select class="form-control" name="player">
+                <?php
+                foreach($players as $player)
+                {
+                    if ( $player['goals'] > 0)
+                        echo "<option value=" . $player['id'] . ">                          
+                            <p>{$player['first_name']} {$player['last_name']}</p>        
+                            </option>";
+                }
+                ?>
+            </select>
+            <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
+            <input type="hidden" name="team" value="a">
             <input value="remove" type="submit" name="remove" class="btn btn-danger">
         </form>
     </div>
@@ -141,6 +161,24 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
             <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
             <input type="hidden" name="team" value="b">
             <input value="add" type="submit" name="add" class="btn btn-danger">
+        </form>
+    </div>
+    <div class="form-group col col-lg-5">
+        <label for="">Players <?php echo $name_team_b; ?></label>
+        <form action="../app/adjust_game_manager.php" method="POST">
+            <select class="form-control" name="player">
+                <?php
+                    foreach($players as $player)
+                    {
+                        if ( $player['goals'] > 0)
+                        echo "<option value=" . $player['id'] . ">                          
+                            <p>{$player['first_name']} {$player['last_name']}</p>        
+                            </option>";
+                    }
+                ?>
+            </select>
+            <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
+            <input type="hidden" name="team" value="b">
             <input value="remove" type="submit" name="remove" class="btn btn-danger">
         </form>
     </div>
@@ -150,7 +188,7 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
             <div class="submit-button col col-lg-2">
                 <form action="../app/button_manager.php" METHOD="POST">
                     <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
-                    <input value="Terug" type="submit" name="back" class="btn btn-danger">
+                    <input value="Back" type="submit" name="back" class="btn btn-danger">
                     <input value="Submit" type="submit" name="submit" class="btn btn-danger" >
                 </form>
             </div>

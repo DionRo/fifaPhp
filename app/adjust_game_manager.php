@@ -91,8 +91,6 @@ if(isset($_POST['add'])){
 
     $stmt = $db_conn->prepare($query);
     $stmt->execute();
-
-
 }
 
 header("Location: ../public/adjust_game.php?adjust=$match_id");
