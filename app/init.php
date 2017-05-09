@@ -8,33 +8,33 @@
 
 $navMenu = [
     [
-        'label' => 'beheer',
+        'label' => 'Beheer',
         'link'  => 'beheer.php',
         'level' => 1
     ],
     [
-        'label' => 'teams',
-        'link'  => 'createTeams.php',
+        'label' => 'Teams',
+        'link'  => 'createTeam.php',
         'level' => 1
     ],
     [
-        'label' => 'spelers',
-        'link'  => 'spelers.php',
+        'label' => 'Spelers',
+        'link'  => 'createPlayer.php',
         'level' => 1
     ],
     [
-        'label' => 'wedstrijdData',
-        'link'  => 'beheer.php',
+        'label' => 'Wedstrijden',
+        'link'  => 'createGame.php',
         'level' => 1
     ],
     [
-        'label' => 'beheer',
-        'link'  => 'beheer.php',
-        'level' => 1
-    ],
-    [
-        'label' => 'Creeer gebruiker',
-        'link'  => 'beheer.php',
+        'label' => 'Gebruikers',
+        'link'  => 'createUser.php',
         'level' => 2
+    ],
+    [
+        'label' => 'Logout',
+        'link'  => 'logout.php',
+        'level' => 1
     ],
 ];

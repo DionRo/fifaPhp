@@ -5,17 +5,8 @@
  * Date: 5/3/2017
  * Time: 03:37 PM
  */
-session_start();
-
-if (!isset($_SESSION['adminLevel']) || !$_SESSION['adminLevel'])
-{
-    $ErrorMessage = "<strong>U moet eerst inloggen voor dat u op deze pagina kan komen</strong>";
-    header("Location: ../index.php?message=$ErrorMessage");
-    die;
-}
 
 require ('header.php');
-
 require ('../app/database.php');
 
 $id = $_GET['adjust'];

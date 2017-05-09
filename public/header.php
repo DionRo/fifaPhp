@@ -16,7 +16,7 @@
         $requestedUrl = $_SERVER['REQUEST_URI'];
         $split = explode('/', $requestedUrl);
 
-        if ($requestedUrl === $url )
+        if (end($split) === $url )
         {
             return true;
         }
@@ -52,7 +52,7 @@
 
 
     <div class="container">
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -69,8 +69,8 @@
                     <ul class="nav navbar-nav">
                         <?php foreach($navMenu as $item): ?>
                             <?php if($item['level'] <= $_SESSION['adminLevel'] ): ?>
-
-                                <li class="<?php checkActiveUrl($item['link']) ? 'active' : '' ?>" role="presentation"><a href="<?= $item['link']; ?>"> <?= $item['label']; ?> </a></li>
+                                <?php echo checkActiveUrl($item['link']); ?>
+                                <li class="<?php echo checkActiveUrl($item['link']) ? 'active' : '' ?>" role="presentation"><a href="<?= $item['link']; ?>"> <?= $item['label']; ?> </a></li>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
