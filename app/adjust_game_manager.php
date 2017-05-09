@@ -95,4 +95,4 @@ if(isset($_POST['add'])){
 
 }
 
-header('location: http://localhost/fifaPhp/public/adjust_game.php?adjust=' . $match_id);
+header("Location: ../public/adjust_game.php?adjust=$match_id");
