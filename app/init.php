@@ -32,9 +32,4 @@ $navMenu = [
         'link'  => 'createUser.php',
         'level' => 2
     ],
-    [
-        'label' => 'Logout',
-        'link'  => 'logout.php',
-        'level' => 1
-    ],
 ];
