@@ -38,17 +38,17 @@ $team_id_a = intval($match['team_id_a']);
 $team_id_b = intval($match['team_id_b']);
     echo "
         <div class='row text-center'>
-            <div class='col col-lg-2 col-md-2'></div>
-            <div class='col col-lg-3 col-md-3 col-sm-3'>
+            <div class='col col-lg-2 col-md-2 col-sm-2 col-xs-2'></div>
+            <div class='col col-lg-3 col-md-3 col-sm-2 col-xs-2'>
                 <h2>$name_team_a</h2>
             </div>
-            <div class='col col-lg-2 col-md-1'>
+            <div class='col col-lg-2 col-md-1 col-sm-3 col-xs-3'>
                 
             </div>
-            <div class='col col-lg-3 col-md-3 col-sm-3'>
+            <div class='col col-lg-3 col-md-3 col-sm-2 col-xs-2'>
                 <h2>$name_team_b</h2>
             </div>
-            <div class='col col-lg-2  col-md-2'></div>
+            <div class='col col-lg-2  col-md-2 col-sm-2 col-xs-2'></div>
         </div>
         ";
 };
@@ -60,17 +60,17 @@ foreach($matches as $match)
     $score_team_b = $match['score_team_b'];
     echo "
         <div class='row text-center'>
-            <div class='col col-lg-3 col-md-3'></div>
-            <div class='col col-lg-2 col-md-2'>
+            <div class='col col-lg-3 col-md-3 col-sm-2 col-xs-2'></div>
+            <div class='col col-lg-2 col-md-2 col-sm-2 col-xs-2'>
                 <h2>$score_team_a</h2>
             </div>
-            <div class='col col-lg-2 col-md-1'>
+            <div class='col col-lg-2 col-md-1 col-sm-3 col-xs-3'>
                <h2>-</h2>
             </div>
-            <div class='col col-lg-2 col-md-2'>
+            <div class='col col-lg-2 col-md-2 col-sm-2 col-xs-2'>
                 <h2>$score_team_b</h2>
             </div>
-            <div class='col col-lg-3 col-md-3'></div>
+            <div class='col col-lg-3 col-md-3 col-sm-2 col-xs-2'></div>
         </div>
         ";
 };
@@ -82,8 +82,8 @@ $players->execute();
 $players = $players->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="row">
-    <div class="col col-lg-3 col-md-2"></div>
-    <div class="form-group col col-lg-4 col-md-4">
+    <div class="col col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
+    <div class="form-group col col-lg-4 col-md-4 col-sm-6">
         <label for="player">Players <?php echo $name_team_a ?></label>
         <form  action="../app/adjust_game_manager.php" method="POST" class="form-inline">
             <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
@@ -110,7 +110,7 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
     $players->execute();
     $players = $players->fetchAll(PDO::FETCH_ASSOC);
     ?>
-    <div class="form-group col col-lg-3 col-md-5">
+    <div class="form-group col col-lg-3 col-md-5 col-sm-5">
         <label for="player">Players <?php echo $name_team_b ?></label>
         <form  action="../app/adjust_game_manager.php" method="POST" class="form-inline">
             <select  class="form-control" name="player">
@@ -130,15 +130,17 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
             <input value="add" type="submit" name="add" class="btn btn-danger">
         </form>
     </div>
+</div>
+<div class="row">
 
     <! Scoorders forms -->
-    <div class="col col-lg-3 col-md-2"></div>
+    <div class="col col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
     <?php
     $players = $db_conn->prepare("SELECT * FROM tbl_players WHERE team_id = $team_id_a");
     $players->execute();
     $players = $players->fetchAll(PDO::FETCH_ASSOC);
     ?>
-    <div class="form-group col col-lg-4 col-md-4">
+    <div class="form-group col col-lg-4 col-md-4 col-sm-6">
         <label for="">Scoorders <?php echo $name_team_a; ?></label>
         <form action="../app/adjust_game_manager.php" method="POST" class="form-inline" >
             <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
@@ -162,7 +164,7 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
     $players->execute();
     $players = $players->fetchAll(PDO::FETCH_ASSOC);
     ?>
-    <div class="form-group col col-lg-5 col-md-3">
+    <div class="form-group col col-lg-5 col-md-3 col-sm-5">
         <label for="">Scoorders <?php echo $name_team_b; ?></label>
         <form action="../app/adjust_game_manager.php" method="POST" class="form-inline">
             <select class="form-control" name="player">
@@ -176,17 +178,16 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
                     }
                 ?>
             </select>
-            <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
-            <input type="hidden" name="team" value="b">
-            <input value="del" type="submit" name="remove" class="btn btn-danger">
-        </form>
+                <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
+                <input type="hidden" name="team" value="b">
+                <input value="del" type="submit" name="remove" class="btn btn-danger">
+            </form>
+        </div>
     </div>
-</div>
-
 <!-- Knoppen  -->
     <div class="row">
-        <div class="col col-lg-5 col-md-4"></div>
-            <div class="submit-button col col-lg-2 col-md-3">
+        <div class="col col-lg-5 col-md-4 col-sm-4 col-xs-4"></div>
+            <div class="submit-button col col-lg-2 col-md-3 col-sm-3 col-xs-3">
                 <form action="../app/button_manager.php" METHOD="POST" class="text-center">
                     <?php echo "<input type=\"hidden\" name=\"match_id\" value=\"$id\">"; ?>
                     <input value="Back" type="submit" name="back" class="btn btn-danger">
