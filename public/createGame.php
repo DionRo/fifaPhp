@@ -11,15 +11,15 @@ require ('header.php');
         <h4>Selecteer match type</h4>
 
         <form action="../app/create_game_manager.php" method="POST">
-            <div class="radio">
-                <label><input type="radio" name="matchType" value="1">Poule</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" name="matchType" value="2">Best of 16</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" name="matchType" value="3">Best of 32</label>
-            </div>
+<!--            <div class="radio">-->
+<!--                <label><input type="radio" name="matchType" value="1">Poule</label>-->
+<!--            </div>-->
+<!--            <div class="radio">-->
+<!--                <label><input type="radio" name="matchType" value="2">Best of 16</label>-->
+<!--            </div>-->
+<!--            <div class="radio">-->
+<!--                <label><input type="radio" name="matchType" value="3">Best of 32</label>-->
+<!--            </div>-->
             <div class="form-group">
                 <input class="btn btn-primary" type="submit" value="Genereer">
             </div>
@@ -43,7 +43,7 @@ require ('header.php');
 
             // Userinput
             $page = isset($_GET['page'])?(int)$_GET['page'] : 1;
-            $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=8 ?(int)$_GET['per-page'] : 8;
+            $perPage = isset($_GET['per-page'])&& $_GET['per-page'] <=5 ?(int)$_GET['per-page'] : 5;
 
             //Positioning
             $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;

@@ -24,23 +24,6 @@ if (isset($_GET['message'])!= null )
         $poules = $poules->fetchAll(PDO::FETCH_ASSOC);
 
         ?>
-
-        <div class="form-group">
-            <label for="pouleID">Poule:</label>
-            <select  class="form-control" name="pouleID">
-                <?php
-
-                foreach ($poules as $poule)
-                {
-                    echo "<option value=".$poule['id']."> 
-                        
-                            <p>".$poule['naam']."</p>        
-                            </option>";
-
-                }
-                ?>
-            </select>
-        </div>
         <div class="form-group">
             <input type="submit" value="Creeër uw team!" class="btn btn-primary" name="register">
         </div>
