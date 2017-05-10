@@ -15,7 +15,6 @@ require ('../app/database.php');
 <header class="page-header">
     <h2>Welkom bij de beheerpgagina van FIFA</h2>
 </header>
-
 <?php
     $sqlCounter = "SELECT COUNT(id) AS total FROM tbl_teams";
     $results = $db_conn->query($sqlCounter);

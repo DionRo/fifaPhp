@@ -7,6 +7,25 @@ require ('header.php');
         <h2>Bekijk hier uw wedstrijd data!</h2>
     </header>
 
+    <?php if ( $_SESSION['adminLevel'] >= 2 ) :?>
+        <h4>Selecteer match type</h4>
+
+        <form action="../app/create_game_manager.php" method="POST">
+            <div class="radio">
+                <label><input type="radio" name="matchType" value="1">Poule</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="matchType" value="2">Best of 16</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="matchType" value="3">Best of 32</label>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Genereer">
+            </div>
+        </form>
+    <?php endif; ?>
+
     <ul class="nav nav-tabs" id="filter" role="tablist">
         <li role="presentation" class="active">
             <a href="#score" id="score-tab" role="tab" data-toggle="tab" aria-controls="score" aria-expanded="true">Score</a>
