@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 require ('header.php');
 require ('../app/database.php');

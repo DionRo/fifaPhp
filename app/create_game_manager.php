@@ -11,6 +11,8 @@ require ('database.php');
 define('NUMBER_OF_POULES', 4);
 define('STARTING_TEAMS', 8);
 
+$db_conn->query("TRUNCATE tbl_matches");
+
 $poules = [
     [
         'name' => 'Poule A',
@@ -71,9 +73,6 @@ for ( $i = 0; $i < count($teams); $i++ ) {
         break;
     }
 }
-echo '<pre>';
-var_dump($poules);
-
 
 //Hier wordt een query vastgelegd die wordt doorgestuurd naar de DB
 $query = 'UPDATE `tbl_teams` SET `poule_id` = :poule_id WHERE id = :id';
@@ -90,4 +89,39 @@ foreach($poules as $poule)
                 'id'        => $team['id']
         ]);
     }
+
+
 }
+
+for ($h = 1; $h <= NUMBER_OF_POULES; $h++) {
+//  Binnen halen poules
+    $query = 'SELECT * FROM `tbl_teams` WHERE `poule_id` = :id';
+    $stmt = $db_conn->prepare($query);
+    $stmt->execute(['id'=>$h]);
+    $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $matches = [];
+
+
+    $team_count = count($teams);
+    $amount_of_matches = $team_count * ($team_count - 1);
+
+
+    for ($i = 0; $i < $team_count; $i++) {
+        for ($j = 0; $j < $team_count; $j++) {
+            if ($i != $j) {
+                array_push($matches, [$teams[$i], $teams[$j]]);
+            }
+        }
+    }
+
+    $query = 'INSERT INTO tbl_matches (`team_id_a`,`team_id_b`) VALUES (:team_id_a, :team_id_b)';
+
+    for ($i = 0; $i < $amount_of_matches; $i++) {
+        $stmt = $db_conn->prepare($query);
+        $stmt->execute(['team_id_a' => $matches[$i][0]['id'], 'team_id_b' => $matches[$i][1]['id']]);
+    }
+
+}
+echo '<pre>';
+var_dump($matches);

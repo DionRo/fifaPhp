@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 09 mei 2017 om 13:15
+-- Gegenereerd op: 11 mei 2017 om 10:47
 -- Serverversie: 10.1.21-MariaDB
 -- PHP-versie: 5.6.30
 
@@ -32,8 +32,8 @@ CREATE TABLE `tbl_matches` (
   `team_id_b` int(10) UNSIGNED NOT NULL,
   `score_team_a` int(10) UNSIGNED DEFAULT '0',
   `score_team_b` int(10) UNSIGNED DEFAULT '0',
-  `isPlayed` tinyint(1) NOT NULL DEFAULT '0',
-  `start_time` datetime NOT NULL
+  `isPlayed` tinyint(1) DEFAULT '0',
+  `start_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -41,15 +41,54 @@ CREATE TABLE `tbl_matches` (
 --
 
 INSERT INTO `tbl_matches` (`id`, `team_id_a`, `team_id_b`, `score_team_a`, `score_team_b`, `isPlayed`, `start_time`) VALUES
-(1, 1, 2, 2, 4, 1, '2017-04-13 18:00:00'),
-(2, 2, 1, 6, 5, 1, '2017-05-04 00:00:00'),
-(3, 1, 2, 2, 2, 1, '0000-00-00 00:00:00'),
-(4, 1, 3, 1, 1, 1, '0000-00-00 00:00:00'),
-(5, 1, 3, 5, 3, 1, '0000-00-00 00:00:00'),
-(6, 8, 7, 1, 0, 0, '0000-00-00 00:00:00'),
-(7, 7, 8, 1, 0, 0, '0000-00-00 00:00:00'),
-(8, 6, 8, 0, 0, 0, '0000-00-00 00:00:00'),
-(9, 9, 8, 2, 1, 0, '2017-04-13 18:00:00');
+(1, 1, 2, 0, 0, 0, NULL),
+(2, 1, 9, 0, 0, 0, NULL),
+(3, 1, 14, 0, 0, 0, NULL),
+(4, 2, 1, 0, 0, 0, NULL),
+(5, 2, 9, 0, 0, 0, NULL),
+(6, 2, 14, 0, 0, 0, NULL),
+(7, 9, 1, 0, 0, 0, NULL),
+(8, 9, 2, 0, 0, 0, NULL),
+(9, 9, 14, 0, 0, 0, NULL),
+(10, 14, 1, 0, 0, 0, NULL),
+(11, 14, 2, 0, 0, 0, NULL),
+(12, 14, 9, 0, 0, 0, NULL),
+(13, 3, 4, 0, 0, 0, NULL),
+(14, 3, 10, 0, 0, 0, NULL),
+(15, 3, 15, 0, 0, 0, NULL),
+(16, 4, 3, 0, 0, 0, NULL),
+(17, 4, 10, 0, 0, 0, NULL),
+(18, 4, 15, 0, 0, 0, NULL),
+(19, 10, 3, 0, 0, 0, NULL),
+(20, 10, 4, 0, 0, 0, NULL),
+(21, 10, 15, 0, 0, 0, NULL),
+(22, 15, 3, 0, 0, 0, NULL),
+(23, 15, 4, 0, 0, 0, NULL),
+(24, 15, 10, 0, 0, 0, NULL),
+(25, 5, 6, 0, 0, 0, NULL),
+(26, 5, 12, 0, 0, 0, NULL),
+(27, 5, 16, 0, 0, 0, NULL),
+(28, 6, 5, 0, 0, 0, NULL),
+(29, 6, 12, 0, 0, 0, NULL),
+(30, 6, 16, 0, 0, 0, NULL),
+(31, 12, 5, 0, 0, 0, NULL),
+(32, 12, 6, 0, 0, 0, NULL),
+(33, 12, 16, 0, 0, 0, NULL),
+(34, 16, 5, 0, 0, 0, NULL),
+(35, 16, 6, 0, 0, 0, NULL),
+(36, 16, 12, 0, 0, 0, NULL),
+(37, 7, 8, 0, 0, 0, NULL),
+(38, 7, 13, 0, 0, 0, NULL),
+(39, 7, 19, 0, 0, 0, NULL),
+(40, 8, 7, 0, 0, 0, NULL),
+(41, 8, 13, 0, 0, 0, NULL),
+(42, 8, 19, 0, 0, 0, NULL),
+(43, 13, 7, 0, 0, 0, NULL),
+(44, 13, 8, 0, 0, 0, NULL),
+(45, 13, 19, 0, 0, 0, NULL),
+(46, 19, 7, 0, 0, 0, NULL),
+(47, 19, 8, 0, 0, 0, NULL),
+(48, 19, 13, 0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -73,7 +112,7 @@ CREATE TABLE `tbl_players` (
 --
 
 INSERT INTO `tbl_players` (`id`, `student_id`, `team_id`, `first_name`, `last_name`, `goals`, `created_at`, `deleted_at`) VALUES
-(1, 'd123456', 1, 'Lasse', 'Schone', 5, '2017-04-13 09:44:13', NULL),
+(1, 'd123456', 1, 'Lasse', 'Schone', 0, '2017-04-13 09:44:13', NULL),
 (2, 'd5435435', 1, 'Davy ', 'Klaassen', 0, '2017-04-13 09:44:13', NULL),
 (3, 'd545454', 1, 'Hakim ', 'Ziyech', 0, '2017-04-13 09:45:47', NULL),
 (4, 'd666555', 1, 'Kasper', 'Dolberg', 0, '2017-04-13 09:45:47', NULL),
@@ -81,8 +120,8 @@ INSERT INTO `tbl_players` (`id`, `student_id`, `team_id`, `first_name`, `last_na
 (6, 'd987665', 2, 'Siem', 'de Jong', 0, '2017-04-13 09:48:23', NULL),
 (7, 'd11555', 2, 'Jeroen', 'Zoet', 0, '2017-04-13 09:48:23', NULL),
 (8, 'd544566', 2, 'Hector', 'Moreno', 0, '2017-04-13 09:48:23', NULL),
-(11, 'D223013', 3, 'Lex', 'Krooswijk', 2, '2017-04-21 10:03:58', NULL),
-(12, 'D223013', 3, 'Dion', 'Rodie', 1, '2017-04-21 10:04:50', NULL),
+(11, 'D223013', 3, 'Lex', 'Krooswijk', 0, '2017-04-21 10:03:58', NULL),
+(12, 'D223013', 3, 'Dion', 'Rodie', 0, '2017-04-21 10:04:50', NULL),
 (13, 'D223013', 3, 'kutay', 'Yal', 0, '2017-04-21 10:05:14', NULL),
 (14, 'D223013', 3, 'Tim', 'Verhijen', 0, '2017-04-21 10:05:46', NULL),
 (15, 'D223013', 4, 'Youri', 'van der Sande', 0, '2017-04-21 10:29:36', NULL),
@@ -124,7 +163,7 @@ INSERT INTO `tbl_poules` (`id`, `naam`, `created_at`, `deleted_at`) VALUES
 
 CREATE TABLE `tbl_teams` (
   `id` int(11) UNSIGNED NOT NULL,
-  `poule_id` int(11) NOT NULL,
+  `poule_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL,
   `points` int(3) DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -136,15 +175,22 @@ CREATE TABLE `tbl_teams` (
 --
 
 INSERT INTO `tbl_teams` (`id`, `poule_id`, `name`, `points`, `created_at`, `deleted_at`) VALUES
-(1, 1, 'Ajax', 3, '2017-04-13 09:42:45', NULL),
+(1, 1, 'Ajax', 6, '2017-04-13 09:42:45', NULL),
 (2, 1, 'PSV', 6, '2017-04-13 09:42:45', NULL),
-(3, 2, 'Test', 0, '2017-04-20 16:05:01', NULL),
-(4, 3, 'Real Madrid', 0, '2017-04-20 16:11:12', NULL),
-(5, 2, 'LeXXor', 0, '2017-04-21 08:47:53', NULL),
+(3, 2, 'Test', 3, '2017-04-20 16:05:01', NULL),
+(4, 2, 'Real-Madrid', 3, '2017-04-20 16:11:12', NULL),
+(5, 3, 'LeXXor', 3, '2017-04-21 08:47:53', NULL),
 (6, 3, 'LeXXoRR', 8, '2017-05-01 15:05:37', NULL),
 (7, 4, 'Dionnie', 6, '2017-05-01 15:53:39', NULL),
 (8, 4, 'Hondjes', 4, '2017-05-03 14:14:24', NULL),
-(9, 1, 'Annie', 0, '2017-05-04 15:23:48', NULL);
+(9, 1, 'Annie', 0, '2017-05-04 15:23:48', NULL),
+(10, 2, 'SexyMe', 0, '2017-05-10 14:37:30', NULL),
+(12, 3, '2ohinkfjdsafk', 0, '2017-05-10 15:54:25', NULL),
+(13, 4, '3fdsiuajkbf', 0, '2017-05-10 15:54:39', NULL),
+(14, 1, '4ohinkfjdsafk', 0, '2017-05-10 15:54:39', NULL),
+(15, 2, 'kuyhdkwjn', 0, '2017-05-11 10:12:26', NULL),
+(16, 3, 'iwmwklsq', 0, '2017-05-11 10:12:26', NULL),
+(19, 4, 'knwjdnknd', 0, '2017-05-11 10:13:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -219,7 +265,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT voor een tabel `tbl_matches`
 --
 ALTER TABLE `tbl_matches`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT voor een tabel `tbl_players`
 --
@@ -234,7 +280,7 @@ ALTER TABLE `tbl_poules`
 -- AUTO_INCREMENT voor een tabel `tbl_teams`
 --
 ALTER TABLE `tbl_teams`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT voor een tabel `tbl_users`
 --

@@ -53,12 +53,14 @@ require ('header.php');
             $matches->execute();
             $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
 
+            $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+            $pages = ceil($total /$perPage);
+
             $teams = $db_conn->prepare ("SELECT * FROM tbl_teams");
             $teams->execute();
             $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
 
-            $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
-            $pages = ceil($total /$perPage);
+
             ?>
 
             <ul class="list-group">
@@ -127,12 +129,13 @@ require ('header.php');
             $matches->execute();
             $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
 
+            $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+            $pages = ceil($total /$perPage);
+
             $teams = $db_conn->prepare ("SELECT * FROM tbl_teams");
             $teams->execute();
             $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
 
-            $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
-            $pages = ceil($total /$perPage);
             ?>
 
             <ul class="list-group">
