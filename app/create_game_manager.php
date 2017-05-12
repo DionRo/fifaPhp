@@ -106,7 +106,7 @@ if($played_matches == 0)
 
     }
 
-    for ($h = 1; $h <= NUMBER_OF_POULES; $h++) {
+    for ( $h = 1; $h <= NUMBER_OF_POULES; $h++ ) {
     //  Binnen halen poules
         $query = 'SELECT * FROM `tbl_teams` WHERE `poule_id` = :id';
         $stmt = $db_conn->prepare($query);
@@ -136,39 +136,182 @@ if($played_matches == 0)
         }
         $message = "Nieuw poule schema gegenereerd";
     }
-}elseif ($played_matches != 0)
-{
-    if($unplayed_matches == 0)
-    {
-        $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 1';
+} else if ( $played_matches != 0 ) {
+    if ( $unplayed_matches == 0 ) {
+        $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 1 AND matchType = 1';
         $stmt = $db_conn->prepare($query);
         $stmt->execute();
-        $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $played_matches = $stmt->rowCount();
 
-        $query = 'SELECT * FROM `tbl_teams` WHERE `poule_id` = :id ORDER BY `points` DESC LIMIT 2';
+        $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 0 AND matchType = 1';
+        $stmt = $db_conn->prepare($query);
+        $stmt->execute();
+        $unplayed_matches = $stmt->rowCount();
 
-        $poule_winners = [];
-        for ($i = 1; $i <=NUMBER_OF_POULES; $i++)
-        {
+        if ( $played_matches == 0 ) {
+            $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 1 AND matchType = 0';
             $stmt = $db_conn->prepare($query);
-            $stmt->execute(['id'=> $i]);
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt->execute();
+            $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            array_push($poule_winners,$results);
+            $query = 'SELECT * FROM `tbl_teams` WHERE `poule_id` = :id ORDER BY `points` DESC LIMIT 2';
+
+            $poule_winners = [];
+            for ($i = 1; $i <= NUMBER_OF_POULES; $i++) {
+                $stmt = $db_conn->prepare($query);
+                $stmt->execute(['id' => $i]);
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                array_push($poule_winners, $results);
+
+            }
+
+            $query = 'INSERT INTO tbl_matches (`team_id_a`,`team_id_b`,`matchType`) VALUES (:team_id_a, :team_id_b, :matchType)';
+            for ($i = 0; $i < BEST_OF_EIGHT; $i++) {
+                $team_id_a = $poule_winners[$i][0]['id'];
+                $team_id_b = $poule_winners[$i][1]['id'];
+
+                $stmt = $db_conn->prepare($query);
+                $stmt->execute(['team_id_a' => $team_id_a, 'team_id_b' => $team_id_b, 'matchType' => 1]);
+
+            }
+
+            $message = "Nieuw eliminatie schema gegenereerd";
+
+        } else if ( $played_matches != 0 ) {
+            if ( $unplayed_matches == 0 ) {
+                $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 1 AND matchType = 2';
+                $stmt = $db_conn->prepare($query);
+                $stmt->execute();
+                $played_matches = $stmt->rowCount();
+
+                $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 0 AND matchType = 2';
+                $stmt = $db_conn->prepare($query);
+                $stmt->execute();
+                $unplayed_matches = $stmt->rowCount();
+
+                if ( $played_matches == 0 ) {
+                    $best_of_eight_winners = [];
+
+                    $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 1 AND matchType = 1';
+                    $stmt = $db_conn->prepare($query);
+                    $stmt->execute();
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    $query = 'SELECT * FROM tbl_teams';
+                    $stmt = $db_conn->prepare($query);
+                    $stmt->execute();
+                    $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    foreach ( $results as $result ) {
+                        if ( $result['score_team_a'] > $result['score_team_b'] ) {
+                            $team_a = [];
+
+                            foreach ( $teams as $team ) {
+                                if ( $result['team_id_a'] == $team['id'] ) {
+                                    $team_a = $team;
+
+                                }
+                            }
+
+                            array_push($best_of_eight_winners, $team_a);
+
+                        } else if ( $result['score_team_b'] > $result['score_team_a'] ) {
+                            $team_b = [];
+
+                            foreach ( $teams as $team ) {
+                                if ( $result['team_id_b'] == $team['id'] ) {
+                                    $team_b = $team;
+
+                                }
+                            }
+
+                            array_push($best_of_eight_winners, $team_b);
+
+                        }
+                    }
+
+                    $matches = [
+                        [
+                            $best_of_eight_winners[0],
+                            $best_of_eight_winners[1],
+                        ],
+                        [
+                            $best_of_eight_winners[2],
+                            $best_of_eight_winners[3],
+                        ],
+                    ];
+
+                    $query = 'INSERT INTO tbl_matches (team_id_a, team_id_b, matchType) VALUES (:team_id_a, :team_id_b, 2)';
+                    foreach ( $matches as $match ) {
+                        $stmt = $db_conn->prepare($query);
+                        $stmt->execute(['team_id_a' => $match[0]['id'], 'team_id_b' => $match[1]['id']]);
+                    }
+
+                    $message = 'New best of 4 created';
+                } else if ( $played_matches != 0 ) {
+                    if ( $unplayed_matches == 0 ) {
+                        $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 1 AND matchType = 2';
+                        $stmt = $db_conn->prepare($query);
+                        $stmt->execute();
+                        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        $query = 'SELECT * FROM tbl_teams';
+                        $stmt = $db_conn->prepare($query);
+                        $stmt->execute();
+                        $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        $best_of_four_winners = [];
+
+                        foreach ( $results as $result ) {
+                            echo 'a';
+                            if ($result['score_team_a'] > $result['score_team_b']) {
+                                $team_a = [];
+
+                                foreach ($teams as $team) {
+                                    if ($result['team_id_a'] == $team['id']) {
+                                        $team_a = $team;
+                                    }
+                                }
+
+                                array_push($best_of_four_winners, $team_a);
+
+                            } else {
+                                $team_b = [];
+
+                                foreach ($teams as $team) {
+                                    if ($result['team_id_b'] == $team['id']) {
+                                        $team_b = $team;
+                                    }
+                                }
+
+                                array_push($best_of_four_winners, $team_b);
+
+                            }
+                        }
+
+                        $match = [
+                            $best_of_four_winners[0],
+                            $best_of_four_winners[1],
+                        ];
+
+                        $query = 'INSERT INTO tbl_matches (team_id_a, team_id_b, matchType) VALUES (:team_id_a, :team_id_b, 3)';
+                        $stmt = $db_conn->prepare($query);
+                        $stmt->execute(['team_id_a' => $match[0]['id'], 'team_id_b' => $match[1]['id']]);
+
+                        $message = 'Finale is gegenereerd';
+
+                    } else {
+                        $message = 'Er is al een wedstrijd gespeel, het schema kan niet meer worden aangepast';
+                    }
+                }
+
+            } else {
+                $message = "Er is al een match gespeeld het schema kan niet meer worden veranderd";
+
+            }
         }
-
-        $query = 'INSERT INTO tbl_matches (`team_id_a`,`team_id_b`,`matchType`) VALUES (:team_id_a, :team_id_b, :matchType)';
-        for ($i = 0; $i < BEST_OF_EIGHT; $i++)
-        {
-            $team_id_a = $poule_winners[$i][0]['id'];
-            $team_id_b = $poule_winners[$i][1]['id'];
-
-            $stmt = $db_conn->prepare($query);
-            $stmt->execute(['team_id_a' => $team_id_a,'team_id_b' => $team_id_b,'matchType' => 1]);
-        }
-
-        $message = "Nieuw eliminatie schema gegenereerd";
-    }else{
+    } else {
         $message = "Er is al een match gespeeld het schema kan niet meer worden veranderd";
     }
 }
