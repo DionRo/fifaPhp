@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 11 mei 2017 om 10:47
+-- Gegenereerd op: 12 mei 2017 om 09:00
 -- Serverversie: 10.1.21-MariaDB
 -- PHP-versie: 5.6.30
 
@@ -33,6 +33,7 @@ CREATE TABLE `tbl_matches` (
   `score_team_a` int(10) UNSIGNED DEFAULT '0',
   `score_team_b` int(10) UNSIGNED DEFAULT '0',
   `isPlayed` tinyint(1) DEFAULT '0',
+  `matchType` int(1) NOT NULL DEFAULT '0',
   `start_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
@@ -40,55 +41,59 @@ CREATE TABLE `tbl_matches` (
 -- Gegevens worden geëxporteerd voor tabel `tbl_matches`
 --
 
-INSERT INTO `tbl_matches` (`id`, `team_id_a`, `team_id_b`, `score_team_a`, `score_team_b`, `isPlayed`, `start_time`) VALUES
-(1, 1, 2, 0, 0, 0, NULL),
-(2, 1, 9, 0, 0, 0, NULL),
-(3, 1, 14, 0, 0, 0, NULL),
-(4, 2, 1, 0, 0, 0, NULL),
-(5, 2, 9, 0, 0, 0, NULL),
-(6, 2, 14, 0, 0, 0, NULL),
-(7, 9, 1, 0, 0, 0, NULL),
-(8, 9, 2, 0, 0, 0, NULL),
-(9, 9, 14, 0, 0, 0, NULL),
-(10, 14, 1, 0, 0, 0, NULL),
-(11, 14, 2, 0, 0, 0, NULL),
-(12, 14, 9, 0, 0, 0, NULL),
-(13, 3, 4, 0, 0, 0, NULL),
-(14, 3, 10, 0, 0, 0, NULL),
-(15, 3, 15, 0, 0, 0, NULL),
-(16, 4, 3, 0, 0, 0, NULL),
-(17, 4, 10, 0, 0, 0, NULL),
-(18, 4, 15, 0, 0, 0, NULL),
-(19, 10, 3, 0, 0, 0, NULL),
-(20, 10, 4, 0, 0, 0, NULL),
-(21, 10, 15, 0, 0, 0, NULL),
-(22, 15, 3, 0, 0, 0, NULL),
-(23, 15, 4, 0, 0, 0, NULL),
-(24, 15, 10, 0, 0, 0, NULL),
-(25, 5, 6, 0, 0, 0, NULL),
-(26, 5, 12, 0, 0, 0, NULL),
-(27, 5, 16, 0, 0, 0, NULL),
-(28, 6, 5, 0, 0, 0, NULL),
-(29, 6, 12, 0, 0, 0, NULL),
-(30, 6, 16, 0, 0, 0, NULL),
-(31, 12, 5, 0, 0, 0, NULL),
-(32, 12, 6, 0, 0, 0, NULL),
-(33, 12, 16, 0, 0, 0, NULL),
-(34, 16, 5, 0, 0, 0, NULL),
-(35, 16, 6, 0, 0, 0, NULL),
-(36, 16, 12, 0, 0, 0, NULL),
-(37, 7, 8, 0, 0, 0, NULL),
-(38, 7, 13, 0, 0, 0, NULL),
-(39, 7, 19, 0, 0, 0, NULL),
-(40, 8, 7, 0, 0, 0, NULL),
-(41, 8, 13, 0, 0, 0, NULL),
-(42, 8, 19, 0, 0, 0, NULL),
-(43, 13, 7, 0, 0, 0, NULL),
-(44, 13, 8, 0, 0, 0, NULL),
-(45, 13, 19, 0, 0, 0, NULL),
-(46, 19, 7, 0, 0, 0, NULL),
-(47, 19, 8, 0, 0, 0, NULL),
-(48, 19, 13, 0, 0, 0, NULL);
+INSERT INTO `tbl_matches` (`id`, `team_id_a`, `team_id_b`, `score_team_a`, `score_team_b`, `isPlayed`, `matchType`, `start_time`) VALUES
+(1, 1, 2, 0, 0, 1, 0, NULL),
+(2, 1, 9, 0, 0, 1, 0, NULL),
+(3, 1, 14, 0, 0, 1, 0, NULL),
+(4, 2, 1, 0, 0, 1, 0, NULL),
+(5, 2, 9, 0, 0, 1, 0, NULL),
+(6, 2, 14, 0, 0, 1, 0, NULL),
+(7, 9, 1, 0, 0, 1, 0, NULL),
+(8, 9, 2, 0, 0, 1, 0, NULL),
+(9, 9, 14, 0, 0, 1, 0, NULL),
+(10, 14, 1, 0, 0, 1, 0, NULL),
+(11, 14, 2, 0, 0, 1, 0, NULL),
+(12, 14, 9, 0, 0, 1, 0, NULL),
+(13, 3, 4, 0, 0, 1, 0, NULL),
+(14, 3, 10, 0, 0, 1, 0, NULL),
+(15, 3, 15, 0, 0, 1, 0, NULL),
+(16, 4, 3, 0, 0, 1, 0, NULL),
+(17, 4, 10, 0, 0, 1, 0, NULL),
+(18, 4, 15, 0, 0, 1, 0, NULL),
+(19, 10, 3, 0, 0, 1, 0, NULL),
+(20, 10, 4, 0, 0, 1, 0, NULL),
+(21, 10, 15, 0, 0, 1, 0, NULL),
+(22, 15, 3, 0, 0, 1, 0, NULL),
+(23, 15, 4, 0, 0, 1, 0, NULL),
+(24, 15, 10, 0, 0, 1, 0, NULL),
+(25, 5, 6, 0, 0, 1, 0, NULL),
+(26, 5, 12, 0, 0, 1, 0, NULL),
+(27, 5, 16, 0, 0, 1, 0, NULL),
+(28, 6, 5, 0, 0, 1, 0, NULL),
+(29, 6, 12, 0, 0, 1, 0, NULL),
+(30, 6, 16, 0, 0, 1, 0, NULL),
+(31, 12, 5, 0, 0, 1, 0, NULL),
+(32, 12, 6, 0, 0, 1, 0, NULL),
+(33, 12, 16, 0, 0, 1, 0, NULL),
+(34, 16, 5, 0, 0, 1, 0, NULL),
+(35, 16, 6, 0, 0, 1, 0, NULL),
+(36, 16, 12, 0, 0, 1, 0, NULL),
+(37, 7, 8, 0, 0, 1, 0, NULL),
+(38, 7, 13, 0, 0, 1, 0, NULL),
+(39, 7, 19, 0, 0, 1, 0, NULL),
+(40, 8, 7, 0, 0, 1, 0, NULL),
+(41, 8, 13, 0, 0, 1, 0, NULL),
+(42, 8, 19, 0, 0, 1, 0, NULL),
+(43, 13, 7, 0, 0, 1, 0, NULL),
+(44, 13, 8, 0, 0, 1, 0, NULL),
+(45, 13, 19, 0, 0, 1, 0, NULL),
+(46, 19, 7, 0, 0, 1, 0, NULL),
+(47, 19, 8, 0, 0, 1, 0, NULL),
+(48, 19, 13, 0, 0, 1, 0, NULL),
+(49, 1, 2, 0, 0, 0, 1, NULL),
+(50, 3, 4, 0, 0, 0, 1, NULL),
+(51, 6, 5, 0, 0, 0, 1, NULL),
+(52, 7, 8, 0, 0, 0, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -265,7 +270,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT voor een tabel `tbl_matches`
 --
 ALTER TABLE `tbl_matches`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT voor een tabel `tbl_players`
 --
