@@ -26,6 +26,13 @@ require ('header.php');
         </form>
     <?php endif; ?>
 
+<?php
+if (isset($_GET['message'])!= null )
+{
+    echo $_GET['message'];
+}
+?>
+
     <ul class="nav nav-tabs" id="filter" role="tablist">
         <li role="presentation" class="active">
             <a href="#score" id="score-tab" role="tab" data-toggle="tab" aria-controls="score" aria-expanded="true">Score</a>
@@ -142,10 +149,33 @@ require ('header.php');
                 <?php
                 foreach ($matches as $match)
                 {
-                    $id="{$match['id']}";
+                    $id = $match['id'];
 
-                    $name_team_a = $teams[$match['team_id_a']]['name'];
-                    $name_team_b = $teams[$match['team_id_b']]['name'];
+                    $team_id_a = $match['team_id_a'];
+                    $team_id_b = $match['team_id_b'];
+
+                    foreach ($teams as $team) {
+                        if ($team_id_a == $team['id']) {
+                            $name_team_a    = $team['name'];
+                            $id_team_a      = $team['id'];
+                        }
+                        else if ($team_id_b == $team['id'])
+                        {
+                            $name_team_b = $team['name'];
+                            $id_team_b = $team['id'];
+                        }
+                        else
+                        {
+                            if (!isset($name_team_a) && !isset($id_team_a)) {
+                                $name_team_a    = "ERROR";
+                                $id_team_a      = "-1";
+                            }
+                            else if (!isset($name_team_b) && !isset($id_team_b)) {
+                                $name_team_b    = "ERROR";
+                                $id_team_b      = "-1";
+                            }
+                        }
+                    }
 
                     $matchA = $match['score_team_a'];
                     $matchB = $match['score_team_b'];
@@ -305,15 +335,4 @@ require ('header.php');
         </div>
     </div>
 </div>
-    <?php
-    if (isset($_GET['message'])!= null )
-    {
-        echo $_GET['message'];
-    }
-    ?>
-</section>
-
-<?php
- require ('footer.php');
-
-?>
+<?php require ('footer.php'); ?>
