@@ -110,7 +110,10 @@ if (isset($_GET['message'])!= null )
                                       <li>
                                         (MATCH: $id) $name_team_a (TEAM_ID: $id_team_a) - $name_team_b (TEAM_ID: $id_team_b)
                                       </li>
-                                  </form>
+                                <form action=\"adjust_game.php\" method=\"GET\">
+                                      <input type=\"hidden\" name=\"adjust\" value=\"{$match['id']}\">
+                                      <input class=\"delete\" type=\"submit\" value=\"Play\">
+                                         </form>
                               </ul>";
                     }
                 ?>
