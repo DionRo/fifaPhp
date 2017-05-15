@@ -5,6 +5,8 @@
  * Date: 5/1/2017
  * Time: 14:03
  */
+
+require ('app/database.php');
 ?>
 
 <!doctype html>
