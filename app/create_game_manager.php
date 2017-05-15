@@ -317,5 +317,3 @@ if($played_matches == 0)
 }
 header('location: ../public/createGame.php?message='.$message);
 
-
-echo '<pre>';

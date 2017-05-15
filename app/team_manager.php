@@ -7,9 +7,9 @@ require('database.php');
       if (empty($_POST['nameTeam'])){header("Location: ../public/createTeam.php?message=$ErrorMessage");die;}
 
       $pouleID = 0;
-      $sqlAdd = "INSERT INTO " .$dbname . "." . $table . "(`name`, `poule_id`) VALUES ('" . $teamName . "','" . $pouleID . "')";
+      $sqlAdd = "INSERT INTO " .$dbname . "." . $table . "(`name`, `poule_id`) VALUES (:nameTeam , :poule_id)";
       $sqlAddObj = $db_conn->prepare($sqlAdd);
-      $sqlAddObj->execute();
+      $sqlAddObj->execute(['nameTeam' => $teamName , 'poule_id' => $pouleID]);
       $ErrorMessage = "<strong>Toevoegen was succesvol!</strong>";
       header("Location: ../public/createTeam.php?message=$ErrorMessage");
 

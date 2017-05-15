@@ -36,10 +36,10 @@ foreach($resultArr as $row)
     }
 }
 
-$sqlAdd = "INSERT INTO " .$dbname . "." . $table2 . "(`name`,`email`,`password`,`adminLevel`) VALUES ('" .$naam . "',
-'" . $email . "','" . $pass . "','" . $adminlevel . "')";
+$sqlAdd = "INSERT INTO tbl_users (`name`,`email`,`password`,`adminLevel`) VALUES (:naam, :email, :password, :adminLevel)";
 $sqlAddObj = $db_conn->prepare($sqlAdd);
-$sqlAddObj->execute();
+$sqlAddObj->execute(['naam' => $naam, 'email' => $email, 'password' => $pass, 'adminLevel' => $adminlevel]);
+
 $ErrorMessage = "<strong>Toevoegen was succesvol!</strong>";
 header("Location: ../public/createUser.php?message=$ErrorMessage");
 
