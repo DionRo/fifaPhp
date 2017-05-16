@@ -99,7 +99,7 @@ if (isset($_GET['message'])!= null )
                             }
                         }
 
-                        echo "<ul class=\"agenda-item\">
+                        echo "<ul class=\"game-item\">
                                   <form action=\"change_game.php\" method=\"POST\">
                                       <input type=\"hidden\" name=\"play\" value=\"{$match['id']}\">
                                       <input class=\"adjust\" type=\"submit\" value=\"Adjust\">
@@ -180,7 +180,7 @@ if (isset($_GET['message'])!= null )
                     $matchA = $match['score_team_a'];
                     $matchB = $match['score_team_b'];
 
-                    echo "<ul class=\"agenda-item\">  
+                    echo "<ul class=\"game-item\">  
                              </form>
                           <li>$name_team_a {.$matchA.} - $name_team_b {.$matchB.}</li>
                           </form>

@@ -21,21 +21,6 @@ a{
 strong{
     font-size: 20px;
 }
-.agenda-items{
-    padding: 50px 0;
-}
-.agenda-item{
-    padding: 15px;
-    border: 1px solid rgb(90, 90, 90);
-    margin: 0 5px 5px 6px;
-    background: #FFF;
-    position: relative;
-    text-align: center;
-}
-#agenda-submit{
-    width: 150px;
-    cursor: pointer;
-}
 .delete{
     position: absolute;
     z-index: 10;
@@ -64,9 +49,25 @@ strong{
     cursor: pointer;
     border: none;
 }
-.agenda-item:hover .delete{
+
+.game-items{
+    padding: 50px 0;
+}
+.game-item{
+    padding: 15px;
+    border: 1px solid rgb(90, 90, 90);
+    margin: 0 5px 5px 6px;
+    background: #FFF;
+    position: relative;
+    text-align: center;
+}
+#game-submit{
+    width: 150px;
+    cursor: pointer;
+}
+.game-item:hover .delete{
     display: block;
 }
-.agenda-item:hover .adjust {
+.game-item:hover .adjust {
     display: block;
 }

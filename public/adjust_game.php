@@ -136,8 +136,17 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
     <! Scoorders forms -->
     <div class="col col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
     <?php
-    $players = $db_conn->prepare("SELECT * FROM tbl_players WHERE team_id = $team_id_a");
-    $players->execute();
+    $players = $db_conn->prepare("
+        SELECT DISTINCT CONCAT(`tbl_players`.`first_name`, '  ', `tbl_players`.`last_name`) 
+        AS fullname , `tbl_players`.`id` 
+        FROM `tbl_scores`
+        INNER JOIN `tbl_players`
+        ON `tbl_scores`.`player_id` = `tbl_players`.`id`
+        WHERE 
+        `tbl_scores`.`match_id` = :match_id AND
+        `tbl_players`.team_id = :team_id
+        ");
+    $players->execute(['match_id' => $id, 'team_id' => $team_id_a]);
     $players = $players->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <div class="form-group col col-lg-4 col-md-4 col-sm-6">
@@ -150,10 +159,11 @@ $players = $players->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                 foreach($players as $player)
                 {
-                    if ( $player['goals'] > 0)
-                        echo "<option value=" . $player['id'] . ">                          
-                            <p>{$player['first_name']} {$player['last_name']}</p>        
-                            </option>";
+                    echo "
+                        <option value=" . $player['id'] . ">                          
+                            <p>{$player['fullname']}</p>        
+                        </option>
+                        ";
                 }
                 ?>
             </select>
