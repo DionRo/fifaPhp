@@ -85,7 +85,7 @@ if (isset($_GET['message'])!= null )
         foreach ($players as $player)
         {
             $id="{$player['id']}";
-            echo "<ul class=\"agenda-item\">
+            echo "<ul class=\"game-item\">
                           <form action=\"adjust_player.php\" method=\"POST\">
                           <input type=\"hidden\" name=\"adjust\" value=\"{$player['id']}\">
                           <input class=\"adjust\" type=\"submit\" value=\"adjust\">

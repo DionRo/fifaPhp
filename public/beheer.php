@@ -58,7 +58,6 @@ foreach ($results as $result)
     echo '<li class="list-group-item li-content center">Er zijn momenteel '.$result['total'].' matches aanwezig in database!</li>';
 }
 ?>
-<section>
     <div class="row">
 
         <form class="col col-lg-2" action="../app/beheer_manager.php" method="post" name="upload_excel"
@@ -101,8 +100,4 @@ foreach ($results as $result)
             echo $_GET['message'];
         }
         ?>
-
-    </ul>
-</section>
-
 <?php require ('footer.php'); ?>

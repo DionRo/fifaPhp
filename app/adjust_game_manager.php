@@ -48,6 +48,15 @@ if(isset($_POST['add'])){
     $stmt = $db_conn->prepare($query);
     $stmt->execute();
 
+
+// Hierin worden de gegevens in tbl_scores gestopt
+    $query = 'INSERT INTO tbl_scores (`player_id`,`match_id`) VALUES (:player, :match_id)';
+    $stmt = $db_conn->prepare($query);
+    $stmt->execute(['player' => $player , 'match_id' => $match_id]);
+
+
+
+
 }elseif (isset($_POST['remove'])){
     $match_id   = $_POST['match_id'];
     $player     = $_POST['player'];
@@ -87,6 +96,10 @@ if(isset($_POST['add'])){
 
     $stmt = $db_conn->prepare($query);
     $stmt->execute();
+
+    $query = 'DELETE FROM tbl_scores WHERE player_id = :player_id AND match_id = :match_id LIMIT 1';
+    $stmt = $db_conn->prepare($query);
+    $stmt->execute(['player_id' => $player, 'match_id' => $match_id]);
 }
 
 header("Location: ../public/adjust_game.php?adjust=$match_id");
