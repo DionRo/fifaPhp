@@ -11,17 +11,14 @@ require ('header.php');
         <h4>Selecteer match type</h4>
 
         <form action="../app/create_game_manager.php" method="POST">
-<!--            <div class="radio">-->
-<!--                <label><input type="radio" name="matchType" value="1">Poule</label>-->
-<!--            </div>-->
-<!--            <div class="radio">-->
-<!--                <label><input type="radio" name="matchType" value="2">Best of 16</label>-->
-<!--            </div>-->
-<!--            <div class="radio">-->
-<!--                <label><input type="radio" name="matchType" value="3">Best of 32</label>-->
-<!--            </div>-->
             <div class="form-group">
                 <input class="btn btn-primary" type="submit" value="Genereer">
+            </div>
+        </form>
+
+        <form action="../app/delete_game_manager.php" method="POST">
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Delete alle matches">
             </div>
         </form>
     <?php endif; ?>

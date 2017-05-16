@@ -14,12 +14,16 @@ if (isset($_POST['delete'])){
     $deleteId = $_POST['delete'];
 
     $sqlDel = "DELETE FROM tbl_teams WHERE id = '$deleteId'";
-    $db_conn->query($sqlDel);
+    try {
+        $db_conn->query($sqlDel);
+        $message = '<strong>Item deleted</strong>';
 
-    $message = '<strong>Item deleted</strong>';
-    header("Location: ../public/createTeam.php?message=$message");
-}
-else{
+    } catch ( PDOException $e ) {
+        $message = '<strong>Je kan dit team niet verwijderen want het team word al gebruikt</strong>';
+
+    }
+} else {
     $message = '<strong>Failed to delete</strong>';
-    header("Location: ../public/createTeam.php?message=$message");
 }
+
+header("Location: ../public/createTeam.php?message=$message");
