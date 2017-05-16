@@ -14,14 +14,16 @@
     $result = $stmt->rowCount();
 
     if ( $result == 0 ) {
-        $query = 'TRUNCATE tbl_matches';
-        $stmt = $db_conn->prepare($query);
-        $result = $stmt->execute();
+        $query = 'DELETE FROM tbl_matches';
+        $message = '<strong>Alle wedstrijden zijn verwijderd</strong>';
 
-        if ( $result ) {
-            $message = '<strong>Alle wedstrijden zijn verwijderd</strong>';
-        } else {
-            $message = '<strong>Er ging iets fout bij het verwijderen van de wedstrijden</strong>';
+        $stmt = $db_conn->prepare($query);
+
+        try {
+            $stmt->execute();
+        } catch ( PDOException $e ) {
+            $message = '<strong>Je kan geen wedstrijd meer verwijderen als er al een gespeeld is</strong>';
+           echo $e;
         }
     } else {
         $message = '<strong>Er is al een wedstrijd gespeeld, hierdoor kunt u geen wedstrijden meer verwijderen</strong>';

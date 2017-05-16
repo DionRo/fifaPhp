@@ -24,7 +24,7 @@ $unplayed_matches = $stmt->rowCount();
 
 if($played_matches == 0)
 {
-    $db_conn->query("TRUNCATE tbl_matches");
+    $db_conn->query("DELETE FROM tbl_matches");
 
     $poules = [
         [
@@ -134,7 +134,7 @@ if($played_matches == 0)
             $stmt = $db_conn->prepare($query);
             $stmt->execute(['team_id_a' => $matches[$i][0]['id'], 'team_id_b' => $matches[$i][1]['id']]);
         }
-        $message = "Nieuw poule schema gegenereerd";
+        $message = "<strong>Nieuw poule schema gegenereerd</strong>";
     }
 } else if ( $played_matches != 0 ) {
     if ( $unplayed_matches == 0 ) {
@@ -176,7 +176,7 @@ if($played_matches == 0)
 
             }
 
-            $message = "Nieuw eliminatie schema gegenereerd";
+            $message = "<strong>Nieuw eliminatie schema gegenereerd</strong>";
 
         } else if ( $played_matches != 0 ) {
             if ( $unplayed_matches == 0 ) {
@@ -248,7 +248,7 @@ if($played_matches == 0)
                         $stmt->execute(['team_id_a' => $match[0]['id'], 'team_id_b' => $match[1]['id']]);
                     }
 
-                    $message = 'New best of 4 created';
+                    $message = '<strong>New best of 4 created</strong>';
                 } else if ( $played_matches != 0 ) {
                     if ( $unplayed_matches == 0 ) {
                         $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 1 AND matchType = 2';
@@ -299,20 +299,20 @@ if($played_matches == 0)
                         $stmt = $db_conn->prepare($query);
                         $stmt->execute(['team_id_a' => $match[0]['id'], 'team_id_b' => $match[1]['id']]);
 
-                        $message = 'Finale is gegenereerd';
+                        $message = '<strong>Finale is gegenereerd</strong>';
 
                     } else {
-                        $message = 'Er is al een wedstrijd gespeel, het schema kan niet meer worden aangepast';
+                        $message = '<strong>Er is al een wedstrijd gespeel, het schema kan niet meer worden aangepast</strong>';
                     }
                 }
 
             } else {
-                $message = "Er is al een match gespeeld het schema kan niet meer worden veranderd";
+                $message = "<strong>Er is al een match gespeeld het schema kan niet meer worden veranderd</strong>";
 
             }
         }
     } else {
-        $message = "Er is al een match gespeeld het schema kan niet meer worden veranderd";
+        $message = "<strong>Er is al een match gespeeld het schema kan niet meer worden veranderd</strong>";
     }
 }
 header('location: ../public/createGame.php?message='.$message);
