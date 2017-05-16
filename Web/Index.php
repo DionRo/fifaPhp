@@ -6,7 +6,7 @@
  * Time: 14:03
  */
 
-require ('app/database.php');
+    require ('app/database.php');
 ?>
 
 <!doctype html>
@@ -132,16 +132,70 @@ require ('app/database.php');
 
         <h2>The Big Tournement</h2>
 
-        <div class="description">
+        <?php
+            $poules = [];
+            $i = 0;
 
-        </div>
+            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 1';
+            $stmt = $db_conn->prepare($query);
+            $stmt->execute();
+            $poule_a = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        <div class="rules">
+            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 2';
+            $stmt = $db_conn->prepare($query);
+            $stmt->execute();
+            $poule_b = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        </div>
+            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 3';
+            $stmt = $db_conn->prepare($query);
+            $stmt->execute();
+            $poule_c = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        <div class="Play">
+            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 4';
+            $stmt = $db_conn->prepare($query);
+            $stmt->execute();
+            $poule_d = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            array_push($poules, $poule_a, $poule_b, $poule_c, $poule_d);
+        ?>
+        <div class="poules">
+            <?php foreach ( $poules as $poule ): ?>
+                <div class="item">
+                    <?php
+                        switch ($i) {
+                            case 0:
+                                echo '<h2>Poule A</h2>';
+                                break;
+                            case 1:
+                                echo '<h2>Poule B</h2>';
+                                break;
+                            case 2:
+                                echo '<h2>Poule C</h2>';
+                                break;
+                            case 3:
+                                echo '<h2>Poule D</h2>';
+                                break;
+                            default:
+                                echo '<h2>Oh oh</h2>';
+                                break;
+                        }
+
+                        $i++;
+                    ?>
+                    <table>
+                        <tr>
+                            <th>Team</th>
+                            <th>Points</th>
+                        </tr>
+                        <?php foreach ( $poule as $team ): ?>
+                            <tr>
+                                <td><?php echo $team['name']; ?></td>
+                                <td><?php echo $team['points']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

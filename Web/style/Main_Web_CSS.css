@@ -211,6 +211,37 @@ nav a{
 
 /*----------------------------------------Tournament----------------------------------------*/
 
+/*----------------------------------------Poules----------------------------------------*/
+
+.poules {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.poules table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.poules tr td {
+    border-radius: 6px 0 0 6px;
+}
+
+.poules tr td:last-of-type {
+    border-radius: 0 6px 6px 0;
+}
+
+.poules td, .poules th {
+    /*border: 1px solid #dddddd;*/
+    text-align: left;
+    padding: 8px;
+}
+
+.poules tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.5);
+}
 
 
 /*----------------------------------------Teams----------------------------------------*/
