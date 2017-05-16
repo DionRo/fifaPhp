@@ -221,7 +221,6 @@ nav a{
 .member{
     margin: 15px;
     padding: 15px;
-    width: 240px;
     height: 360px;
 }
 
@@ -263,5 +262,18 @@ nav a{
     flex-direction: row;
 }
 
+@media screen and ( max-width: 1300px ) {
+    .matches {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and ( max-width: 730px ) {
+    .poules {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 /*----------------------------------------Teams----------------------------------------*/
