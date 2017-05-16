@@ -103,9 +103,9 @@ if (isset($_GET['message'])!= null )
                         }
 
                         echo "<ul class=\"agenda-item\">
-                                  <form action=\"adjust_game.php\" method=\"GET\">
-                                      <input type=\"hidden\" name=\"adjust\" value=\"{$match['id']}\">
-                                      <input class=\"adjust\" type=\"submit\" value=\"adjust\">
+                                  <form action=\"change_game.php\" method=\"POST\">
+                                      <input type=\"hidden\" name=\"play\" value=\"{$match['id']}\">
+                                      <input class=\"adjust\" type=\"submit\" value=\"Adjust\">
                                          </form>
                                       <li>
                                         (MATCH: $id) $name_team_a (TEAM_ID: $id_team_a) - $name_team_b (TEAM_ID: $id_team_b)
