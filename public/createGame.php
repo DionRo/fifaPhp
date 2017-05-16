@@ -8,7 +8,7 @@ require ('header.php');
     </header>
 
     <?php if ( $_SESSION['adminLevel'] >= 2 ) :?>
-        <h4>Selecteer match type</h4>
+        <h4>Geneer matches</h4>
 
         <form action="../app/create_game_manager.php" method="POST">
             <div class="form-group">
