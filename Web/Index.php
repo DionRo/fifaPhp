@@ -164,19 +164,19 @@
                     <?php
                         switch ($i) {
                             case 0:
-                                echo '<h2>Poule A</h2>';
+                                echo '<h3>Poule A</h3>';
                                 break;
                             case 1:
-                                echo '<h2>Poule B</h2>';
+                                echo '<h3>Poule B</h3>';
                                 break;
                             case 2:
-                                echo '<h2>Poule C</h2>';
+                                echo '<h3>Poule C</h3>';
                                 break;
                             case 3:
-                                echo '<h2>Poule D</h2>';
+                                echo '<h3>Poule D</h3>';
                                 break;
                             default:
-                                echo '<h2>Oh oh</h2>';
+                                echo '<h3>Oh oh</h3>';
                                 break;
                         }
 
@@ -196,6 +196,141 @@
                     </table>
                 </div>
             <?php endforeach; ?>
+        </div>
+
+        <div class="matches">
+            <div class="match">
+                <?php
+                    // Userinput
+                    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                    $perPage = isset($_GET['per-page']) && $_GET['per-page'] <= 8 ? (int)$_GET['per-page'] : 8;
+
+                    //Positioning
+                    $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+                    //SQL
+                    $matches = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_matches WHERE isPlayed = TRUE AND start_time IS NOT NULL ORDER BY start_time ASC LIMIT {$start},{$perPage}");
+                    $matches->execute();
+                    $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
+
+                    $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+                    $pages = ceil($total /$perPage);
+
+                    $teams = $db_conn->prepare ("SELECT * FROM tbl_teams");
+                    $teams->execute();
+                    $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
+
+                ?>
+
+                <h3>Played matches</h3>
+
+                <table>
+                    <tr>
+                        <th>naam team a</th>
+                        <th>score team a</th>
+                        <th>naam team b</th>
+                        <th>score team b</th>
+                        <th>speeltijd</th>
+                    </tr>
+                    <?php foreach ( $matches as $match ): ?>
+                        <tr>
+                            <td>
+                                <?php
+                                    foreach ( $teams as $team ) {
+                                        if ( $team['id'] == $match['team_id_a'] ) {
+                                            echo $team['name'];
+                                        }
+                                    }
+                                ?>
+                            </td>
+                            <td><?= $match['score_team_a'] ?></td>
+                            <td>
+                                <?php
+                                    foreach ( $teams as $team ) {
+                                        if ( $team['id'] == $match['team_id_b']) {
+                                            echo $team['name'];
+                                        }
+                                    }
+                                ?>
+                            </td>
+                            <td><?= $match['score_team_b'] ?></td>
+                            <td><?= $match['start_time'] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+
+                <div class="pagenation">
+                    <?php  for ($x =1; $x <= $pages; $x++) :?>
+                        <a href="?page=<?php echo $x; ?>&per-page=<?php echo $perPage ?>"><?php  echo $x; ?></a>
+                    <?php endfor; ?>
+                </div>
+            </div>
+            <div class="match">
+                <?php
+                // Userinput
+                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                $perPage = isset($_GET['per-page']) && $_GET['per-page'] <= 8 ? (int)$_GET['per-page'] : 8;
+
+                //Positioning
+                $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+                //SQL
+                $matches = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_matches WHERE isPlayed = FALSE AND start_time IS NOT NULL ORDER BY start_time ASC LIMIT {$start},{$perPage}");
+                $matches->execute();
+                $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
+
+                $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+                $pages = ceil($total /$perPage);
+
+                $teams = $db_conn->prepare ("SELECT * FROM tbl_teams");
+                $teams->execute();
+                $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
+
+                ?>
+
+                <h3>Unplayed matches</h3>
+
+                <table>
+                    <tr>
+                        <th>naam team a</th>
+                        <th>score team a</th>
+                        <th>naam team b</th>
+                        <th>score team b</th>
+                        <th>speeltijd</th>
+                    </tr>
+                    <?php foreach ( $matches as $match ): ?>
+                        <tr>
+                            <td>
+                                <?php
+                                foreach ( $teams as $team ) {
+                                    if ( $team['id'] == $match['team_id_a'] ) {
+                                        echo $team['name'];
+                                    }
+                                }
+                                ?>
+                            </td>
+                            <td><?= $match['score_team_a'] ?></td>
+                            <td>
+                                <?php
+                                foreach ( $teams as $team ) {
+                                    if ( $team['id'] == $match['team_id_b']) {
+                                        echo $team['name'];
+                                    }
+                                }
+                                ?>
+                            </td>
+                            <td><?= $match['score_team_b'] ?></td>
+                            <td><?= $match['start_time'] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+
+                <div class="pagenation">
+                    <?php  for ($x =1; $x <= $pages; $x++) :?>
+                        <a href="?page=<?php echo $x; ?>&per-page=<?php echo $perPage ?>"><?php  echo $x; ?></a>
+                    <?php endfor; ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
