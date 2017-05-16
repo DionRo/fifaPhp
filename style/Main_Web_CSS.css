@@ -221,7 +221,8 @@ nav a{
 .member{
     margin: 15px;
     padding: 15px;
-    height: 360px;
+    width: 250px;
+    height: auto;
 }
 
 .describe_Member{
