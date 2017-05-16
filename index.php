@@ -28,13 +28,11 @@
         </div>
 
         <nav>
-
-            <a href="">Home</a>
-            <a href="#intro">Intro</a>
-            <a href="#Group">Groep 3</a>
-            <a href="#Tournement">Toernooi</a>
-            <a href="">Teams</a>
-            <a href="admin/index.php">Login</a>
+            <a data-scroll data-options='{ "easing": "linear" }' href="#Top-Header">Home</a>
+            <a data-scroll data-options='{ "easing": "linear" }' href="#intro">Intro</a>
+            <a data-scroll data-options='{ "easing": "linear" }' href="#group">Groep 3</a>
+            <a data-scroll data-options='{ "easing": "linear" }' href="#Tournement">Tournement</a>
+            <a data-scroll data-options='{ "easing": "linear" }' href="admin/index.php">Login</a>
         </nav>
     </div>
 </header>
@@ -336,10 +334,8 @@
 </div>
 
 <footer>
-    
-
-
-
+    <script src="scripts/smooth-scroll.js"></script>
+    <script>smoothScroll.init();</script>
 </footer>
 </body>
 </html>
