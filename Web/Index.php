@@ -136,22 +136,22 @@
             $poules = [];
             $i = 0;
 
-            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 1 ORDER BY DESC';
+            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 1 ORDER BY points DESC';
             $stmt = $db_conn->prepare($query);
             $stmt->execute();
             $poule_a = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 2 ORDER BY DESC';
+            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 2 ORDER BY points DESC';
             $stmt = $db_conn->prepare($query);
             $stmt->execute();
             $poule_b = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 3 ORDER BY DESC';
+            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 3 ORDER BY points DESC';
             $stmt = $db_conn->prepare($query);
             $stmt->execute();
             $poule_c = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 4 ORDER BY DESC';
+            $query = 'SELECT * FROM tbl_teams WHERE poule_id = 4 ORDER BY points DESC';
             $stmt = $db_conn->prepare($query);
             $stmt->execute();
             $poule_d = $stmt->fetchAll(PDO::FETCH_ASSOC);
