@@ -10,7 +10,6 @@ require ('header.php');
 require ('../app/database.php');
 
 ?>
-<?php var_dump($_SESSION); ?>
 
 <header class="page-header">
     <h2>Welkom bij de beheerpgagina van FIFA</h2>
