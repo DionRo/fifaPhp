@@ -50,9 +50,11 @@ $teamsPlayers = $db_conn->prepare("SELECT * FROM tbl_teams");
 $teamsPlayers->execute();
 $teamsPlayers = $teamsPlayers->fetchAll(PDO::FETCH_ASSOC);
 
-$playersTeam = $db_conn->prepare("SELECT * FROM tbl_teams WHERE id = {$player['team_id']}");
-$playersTeam->execute();
-$playersTeam = $playersTeam->fetch(PDO::FETCH_ASSOC);
+if ( $player['team_id'] == NULL ) {
+    $playersTeam = $db_conn->prepare("SELECT * FROM tbl_teams WHERE id = '{$player['team_id']}'");
+    $playersTeam->execute();
+    $playersTeam = $playersTeam->fetch(PDO::FETCH_ASSOC);
+}
 ?>
 
 <div class="form-group">
@@ -60,7 +62,8 @@ $playersTeam = $playersTeam->fetch(PDO::FETCH_ASSOC);
     <label for="teamnummer">team</label>
     <select  class="form-control" name="teamnummer">
         <?php
-        echo "
+        if ( $playersTeam['id'] == NULL ) {
+            echo "
  
                     <option value=" . $playersTeam['id'] . ">
  
@@ -69,6 +72,7 @@ $playersTeam = $playersTeam->fetch(PDO::FETCH_ASSOC);
                     </option>
  
                 ";
+        }
 
         foreach($teamsPlayers as $teamsPlayer)
         {
