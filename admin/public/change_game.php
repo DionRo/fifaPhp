@@ -32,7 +32,7 @@ if (isset($_POST['play']))
 echo "
 <form action='../app/change_game_manager.php' method='POST'>
             <div class='form-group'>
-                <label for=\"date\">Speeltijd:</label>
+                <label for=\"date\">Speeltijd (FORMAT: jjjj-mm-dd --:--:--):</label>
                 <input type=\"hidden\" name=\"id\" value=\"$id\">
                 <input type=\"datetime\" class=\"form-control\" name=\"date\" placeholder='jjjj-mm-dd --:--:--'>
             </div>
