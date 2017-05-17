@@ -12,6 +12,15 @@ define('NUMBER_OF_POULES', 4);
 define('STARTING_TEAMS', 8);
 define('BEST_OF_EIGHT',4);
 
+$query = 'SELECT * FROM tbl_teams';
+$stmt = $db_conn->prepare($query);
+$stmt->execute();
+
+if ( $stmt->rowCount() < STARTING_TEAMS ) {
+    header('Location: ../public/createGame.php?message=<strong>Er bestaan nog niet genoeg teams om te spelen (minimum is 8)</strong>');
+    die;
+}
+
 $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 1 AND matchType = 0';
 $stmt = $db_conn->prepare($query);
 $stmt->execute();
@@ -21,6 +30,8 @@ $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 0 AND matchType = 0';
 $stmt = $db_conn->prepare($query);
 $stmt->execute();
 $unplayed_matches = $stmt->rowCount();
+
+
 
 if($played_matches == 0)
 {

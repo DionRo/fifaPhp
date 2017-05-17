@@ -25,6 +25,12 @@
             $message = '<strong>Je kan geen wedstrijd meer verwijderen als er al een gespeeld is</strong>';
            echo $e;
         }
+
+        $query = 'UPDATE `tbl_teams` SET `poule_id` = 0';
+
+        $stmt = $db_conn->prepare($query);
+        $stmt->execute();
+        
     } else {
         $message = '<strong>Er is al een wedstrijd gespeeld, hierdoor kunt u geen wedstrijden meer verwijderen</strong>';
     }
