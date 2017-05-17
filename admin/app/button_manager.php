@@ -60,6 +60,30 @@ if ( isset($_POST['back']) ) {
         $stmt->execute(['points' => $new_score_b, 'id' => $team_b['id']]);
     }
 
+    $score_team_a = $match['score_team_a'];
+    $score_team_b = $match['score_team_b'];
+
+    $id_team_a = $match['team_id_a'];
+    $id_team_b = $match['team_id_b'];
+
+    $query = 'SELECT * FROM tbl_teams WHERE id = :id';
+    $stmt = $db_conn->prepare($query);
+
+    $stmt->execute(['id' => $id_team_a]);
+    $old_team_a = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmt->execute(['id' => $id_team_b]);
+    $old_team_b = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $old_team_a['totalGoals'] += $score_team_a;
+    $old_team_b['totalGoals'] += $score_team_b;
+
+    $query = 'UPDATE tbl_teams SET `totalGoals` = :goals   WHERE id = :id';
+    $stmt = $db_conn->prepare($query);
+
+    $stmt->execute(['goals' => $score_team_a, 'id' => $id_team_a]);
+    $stmt->execute(['goals' => $score_team_b, 'id' => $id_team_b]);
+
     $Message = "<strong>Updaten is succesvol!</strong>";
     header("Location: ../public/createGame.php?message=$Message");
 }
