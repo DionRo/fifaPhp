@@ -207,7 +207,7 @@
                     $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
                     //SQL
-                    $matches = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_matches WHERE isPlayed = TRUE AND start_time IS NOT NULL ORDER BY start_time ASC LIMIT {$start},{$perPage}");
+                    $matches = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_matches WHERE isPlayed = TRUE AND start_time IS NOT NULL AND matchType = 0 ORDER BY start_time ASC LIMIT {$start},{$perPage}");
                     $matches->execute();
                     $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
 
@@ -273,7 +273,7 @@
                 $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
                 //SQL
-                $matches = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_matches WHERE isPlayed = FALSE AND start_time IS NOT NULL ORDER BY start_time ASC LIMIT {$start},{$perPage}");
+                $matches = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_matches WHERE isPlayed = FALSE AND start_time IS NOT NULL AND matchType = 0 ORDER BY start_time ASC LIMIT {$start},{$perPage}");
                 $matches->execute();
                 $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
 
@@ -329,6 +329,72 @@
                     <?php endfor; ?>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="match">
+        <?php
+        // Userinput
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $perPage = isset($_GET['per-page']) && $_GET['per-page'] <= 8 ? (int)$_GET['per-page'] : 8;
+
+        //Positioning
+        $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+
+        //SQL
+        $matches = $db_conn->prepare ("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_matches WHERE  start_time IS NOT NULL AND matchType = 1 ORDER BY start_time ASC LIMIT {$start},{$perPage}");
+        $matches->execute();
+        $matches = $matches->fetchAll(PDO::FETCH_ASSOC);
+
+        $total = $db_conn->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+        $pages = ceil($total /$perPage);
+
+        $teams = $db_conn->prepare ("SELECT * FROM tbl_teams");
+        $teams->execute();
+        $teams = $teams->fetchAll(PDO::FETCH_ASSOC);
+
+        ?>
+
+        <h3>Eliminatie matches</h3>
+
+        <table>
+            <tr>
+                <th>naam team a</th>
+                <th>score team a</th>
+                <th>naam team b</th>
+                <th>score team b</th>
+                <th>speeltijd</th>
+            </tr>
+            <?php foreach ( $matches as $match ): ?>
+                <tr>
+                    <td>
+                        <?php
+                        foreach ( $teams as $team ) {
+                            if ( $team['id'] == $match['team_id_a'] ) {
+                                echo $team['name'];
+                            }
+                        }
+                        ?>
+                    </td>
+                    <td><?= $match['score_team_a'] ?></td>
+                    <td>
+                        <?php
+                        foreach ( $teams as $team ) {
+                            if ( $team['id'] == $match['team_id_b']) {
+                                echo $team['name'];
+                            }
+                        }
+                        ?>
+                    </td>
+                    <td><?= $match['score_team_b'] ?></td>
+                    <td><?= $match['start_time'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+
+        <div class="pagenation">
+            <?php  for ($x =1; $x <= $pages; $x++) :?>
+                <a href="?page=<?php echo $x; ?>&per-page=<?php echo $perPage ?>"><?php  echo $x; ?></a>
+            <?php endfor; ?>
         </div>
     </div>
 </div>
