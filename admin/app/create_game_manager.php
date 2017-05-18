@@ -165,12 +165,12 @@ if($played_matches == 0)
             $stmt->execute();
             $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $query = 'SELECT * FROM `tbl_teams` WHERE `poule_id` = :id ORDER BY `points` DESC LIMIT 2';
+
+            $query = "SELECT * FROM `tbl_teams` WHERE poule_id = $i ORDER BY points DESC, totalGoals DESC LIMIT 2";
 
             $poule_winners = [];
             for ($i = 1; $i <= NUMBER_OF_POULES; $i++) {
-                $stmt = $db_conn->prepare($query);
-                $stmt->execute(['id' => $i]);
+                $stmt = $db_conn->query($query);
                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 array_push($poule_winners, $results);
