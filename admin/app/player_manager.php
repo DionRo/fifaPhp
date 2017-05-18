@@ -9,7 +9,7 @@ $voornaam           = trim($_POST['voornaam']);
 $achternaam         = trim($_POST['achternaam']);
 $teamnummer         = trim($_POST['teamnummer']);
 
-$ErrorMessage = "<strong>U moet een studentunmmer invullen!</strong>";
+$ErrorMessage = "<strong>U moet een studentnummer invullen!</strong>";
 if (empty($_POST['studentnummer'])){header("Location: ../public/createPlayer.php?message=$ErrorMessage");die;}
 $ErrorMessage = "<strong>U moet een voornaam invullen!</strong>";
 if (empty($_POST['voornaam'])){header("Location: ../public/createPlayer.php?message=$ErrorMessage");die;}
