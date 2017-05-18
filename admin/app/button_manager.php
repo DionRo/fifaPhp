@@ -74,15 +74,18 @@ if ( isset($_POST['back']) ) {
 
     $stmt->execute(['id' => $id_team_b]);
     $old_team_b = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//
+//    $score_a = $old_team_a['totalGoals'] + $score_team_a;
+//    $score_b = $old_team_b['totalGoals'] + $score_team_b;
 
-    $old_team_a['totalGoals'] += $score_team_a;
-    $old_team_b['totalGoals'] += $score_team_b;
+    $update_a = $score_team_a - $score_team_b;
+    $update_b = $score_team_b - $score_team_a;
 
     $query = 'UPDATE tbl_teams SET `totalGoals` = :goals   WHERE id = :id';
     $stmt = $db_conn->prepare($query);
 
-    $stmt->execute(['goals' => $score_team_a, 'id' => $id_team_a]);
-    $stmt->execute(['goals' => $score_team_b, 'id' => $id_team_b]);
+    $stmt->execute(['goals' => $update_a, 'id' => $id_team_a]);
+    $stmt->execute(['goals' => $update_b, 'id' => $id_team_b]);
 
     $Message = "<strong>Updaten is succesvol!</strong>";
     header("Location: ../public/createGame.php?message=$Message");
