@@ -214,10 +214,11 @@ if (isset($_GET['message'])!= null )
                             <tr>
                             <th>Team</th>
                             <th>Points</th> 
+                            <th>Goalbalance</th>
                             </tr>";
 
                     foreach($teamsPoulesA as $teams){
-                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td></tr>";
+                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td> <td>{$teams['totalGoals']}</td></tr>";
                     }
 
                     echo "</table>";
@@ -241,10 +242,11 @@ if (isset($_GET['message'])!= null )
                             <tr>
                             <th>Team</th>
                             <th>Points</th> 
+                            <th>Goalbalance</th>
                             </tr>";
 
                     foreach($teamsPoulesB as $teams){
-                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td></tr>";
+                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td> <td>{$teams['totalGoals']}</td></tr>";
                     }
 
                     echo "</table>";
@@ -269,10 +271,11 @@ if (isset($_GET['message'])!= null )
                             <tr>
                             <th>Team</th>
                             <th>Points</th> 
+                            <th>Goalbalance</th>
                             </tr>";
 
                     foreach($teamsPoulesC as $teams){
-                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td></tr>";
+                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td> <td>{$teams['totalGoals']}</td></tr>";
                     }
 
                     echo "</table>";
@@ -297,10 +300,11 @@ if (isset($_GET['message'])!= null )
                             <tr>
                             <th>Team</th>
                             <th>Points</th> 
+                            <th>Goalbalance</th>
                             </tr>";
 
                     foreach($teamsPoulesD as $teams){
-                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td></tr>";
+                        echo "<tr><td>{$teams['name']}</td> <td>{$teams['points']}</td> <td>{$teams['totalGoals']}</td></tr>";
                     }
 
                     echo "</table>";
