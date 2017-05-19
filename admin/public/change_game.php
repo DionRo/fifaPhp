@@ -34,7 +34,7 @@ echo "
             <div class='form-group'>
                 <label for=\"date\">Speeltijd (FORMAT: jjjj-mm-dd --:--:--):</label>
                 <input type=\"hidden\" name=\"id\" value=\"$id\">
-                <input type=\"datetime\" class=\"form-control\" name=\"date\" placeholder='jjjj-mm-dd --:--:--'>
+                <input type=\"datetime-local\" class=\"form-control\" name=\"date\" placeholder='jjjj-mm-dd --:--:--'>
             </div>
         ";
 echo "<input type=\"submit\" value=\"Update uw speeltijd!\" class=\"btn btn-primary\">";

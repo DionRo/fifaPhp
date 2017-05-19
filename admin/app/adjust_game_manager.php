@@ -27,9 +27,7 @@ if(isset($_POST['add'])){
 
     $team_score = $match[$score_team_x] + 1;
 
-    $query = "  UPDATE `tbl_matches` 
-            SET $score_team_x = '$team_score'  
-            WHERE `id` = $match_id";
+    $query = "  UPDATE `tbl_matches` SET $score_team_x = '$team_score' WHERE `id` = $match_id";
 
     $stmt = $db_conn->prepare($query);
     $stmt->execute();
@@ -41,13 +39,9 @@ if(isset($_POST['add'])){
 
     $team_score = $players['goals'] + 1;
 
-    $query = "  UPDATE `tbl_players` 
-            SET `goals` = '$team_score'  
-            WHERE `id` = $player";
-
+    $query = "  UPDATE `tbl_players` SET `goals` = '$team_score' WHERE `id` = $player";
     $stmt = $db_conn->prepare($query);
     $stmt->execute();
-
 
 // Hierin worden de gegevens in tbl_scores gestopt
     $query = 'INSERT INTO tbl_scores (`player_id`,`match_id`) VALUES (:player, :match_id)';
