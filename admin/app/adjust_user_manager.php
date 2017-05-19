@@ -17,25 +17,29 @@
         $email      = $_POST['email'];
         $adminLevel = $_POST['adminLevel'];
 
-        if ( empty($password) ) {
-            $query = 'UPDATE tbl_users SET name = :name, email = :email, adminLevel = :adminLevel WHERE id = :id';
-            $stmt = $db_conn->prepare($query);
-            $result = $stmt->execute(['name' => $name, 'email' => $email, 'adminLevel' => $adminLevel, 'id' => $id]);
+        if ( $adminLevel <= 2 && $adminLevel >= 1 ) {
+            if (empty($password)) {
+                $query = 'UPDATE tbl_users SET name = :name, email = :email, adminLevel = :adminLevel WHERE id = :id';
+                $stmt = $db_conn->prepare($query);
+                $result = $stmt->execute(['name' => $name, 'email' => $email, 'adminLevel' => $adminLevel, 'id' => $id]);
 
+            } else {
+                $password = sha1($password);
+                $password = crypt($password, 'ex');
+
+                $query = 'UPDATE tbl_users SET name = :name, password = :password, email = :email, adminLevel = :adminLevel WHERE id = :id';
+                $stmt = $db_conn->prepare($query);
+                $result = $stmt->execute(['name' => $name, 'password' => $password, 'email' => $email, 'adminLevel' => $adminLevel, 'id' => $id]);
+
+            }
+
+            if ($result) {
+                $message = '<strong>Edit succesvol</strong>';
+            } else {
+                $message = '<strong>Er is iets mis gegaan, neem contact op met de beheerder</strong>';
+            }
         } else {
-            $password = sha1($password);
-            $password = crypt($password,'ex');
-
-            $query = 'UPDATE tbl_users SET name = :name, password = :password, email = :email, adminLevel = :adminLevel WHERE id = :id';
-            $stmt = $db_conn->prepare($query);
-            $result = $stmt->execute(['name' => $name, 'password' => $password, 'email' => $email, 'adminLevel' => $adminLevel, 'id' => $id]);
-
-        }
-
-        if ($result) {
-            $message = '<strong>Edit succesvol</strong>';
-        } else {
-            $message = '<strong>Er is iets mis gegaan, neem contact op met de beheerder</strong>';
+            $message = '<strong>Het ingevoerde admin level word niet geaccepteerd</strong>';
         }
     }
 
