@@ -8,4 +8,4 @@
 session_start();
 session_destroy();
 $ErrorMessage = "<strong>U bent succesvol uitgelogd</strong>";
-header("Location: ../index.php?message=$ErrorMessage");
+header("Location: ../../");
