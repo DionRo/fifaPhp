@@ -58,17 +58,18 @@ foreach ($results as $result)
 }
 ?>
     <div class="row">
-
-        <form class="col col-lg-2" action="../app/beheer_manager.php" method="post" name="upload_excel"
+        <form class="col col-lg-10" action="../app/beheer_manager.php" method="post" name="upload_excel"
               enctype="multipart/form-data">
             <div class="form-group">
-                <div class="">
+                <div class="col col-lg-2">
                     <input type="submit" name="export-matches" class="btn btn-success" value="Exporteer matches"/>
+                </div>
+                <div class="col col-lg-2">
+                    <input type="submit" name="export-teams" class="btn btn-success" value="Exporteer teams"/>
                 </div>
             </div>
         </form>
     </div>
-
         <?php
         if (isset($_GET['message'])!= null )
         {

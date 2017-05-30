@@ -24,5 +24,21 @@ if(isset($_POST["export-matches"])){
         fputcsv($output, $row);
     }
     fclose($output);
+}elseif(isset($_POST["export-teams"])){
+
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=teams.csv');
+    $output = fopen("php://output", "w");
+    fputcsv($output, array('Team_id', 'TeamName'));
+
+    $query = 'SELECT `id`,`name` FROM tbl_teams ORDER BY id ASC ';
+    $stmt = $db_conn->prepare($query);
+    $stmt->execute();
+
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC))
+    {
+        fputcsv($output, $row);
+    }
+    fclose($output);
 }
 
