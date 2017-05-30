@@ -67,30 +67,6 @@ foreach ($results as $result)
                 </div>
             </div>
         </form>
-        <form class="col col-lg-2" action="../app/beheer_manager.php" method="post" name="upload_excel"
-              enctype="multipart/form-data">
-            <div class="form-group">
-                <div class="">
-                    <input type="submit" name="export-teams" class="btn btn-success" value="Exporteer Teams"/>
-                </div>
-            </div>
-        </form>
-        <form class="col col-lg-2" action="../app/beheer_manager.php" method="post" name="upload_excel"
-              enctype="multipart/form-data">
-            <div class="form-group">
-                <div class="">
-                    <input type="submit" name="export-players" class="btn btn-success" value="Exporteer Players"/>
-                </div>
-            </div>
-        </form>
-        <form class="col col-lg-2" action="../app/beheer_manager.php" method="post" name="upload_excel"
-              enctype="multipart/form-data">
-            <div class="form-group">
-                <div class="">
-                    <input type="submit" name="export-users" class="btn btn-success" value="Exporteer Users"/>
-                </div>
-            </div>
-        </form>
     </div>
 
         <?php
