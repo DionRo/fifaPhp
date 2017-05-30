@@ -57,19 +57,25 @@ foreach ($results as $result)
     echo '<li class="list-group-item li-content center">Er zijn momenteel '.$result['total'].' matches aanwezig in database!</li>';
 }
 ?>
-    <div class="row">
-        <form class="col col-lg-10" action="../app/beheer_manager.php" method="post" name="upload_excel"
-              enctype="multipart/form-data">
-            <div class="form-group">
-                <div class="col col-lg-2">
-                    <input type="submit" name="export-matches" class="btn btn-success" value="Exporteer matches"/>
-                </div>
-                <div class="col col-lg-2">
-                    <input type="submit" name="export-teams" class="btn btn-success" value="Exporteer teams"/>
-                </div>
+
+<div class="row box">
+    <form class="" action="../app/beheer_manager.php" method="post" name="upload_excel" enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="col col-lg-2">
+                <input type="submit" name="export-matches" class="btn btn-success" value="Exporteer matches"/>
             </div>
-        </form>
-    </div>
+            <div class="col col-lg-2">
+                <input type="submit" name="export-teams" class="btn btn-success" value="Exporteer teams"/>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="warning-box">
+    <p class="alert alert-danger" role="alert"><strong>Warning!</strong> Verander niet de bestandsnamen van de .CSV bestanden (Deze worden dan onbruikbaar in de C# applicatie)</p>
+    <p class="alert alert-danger" role="alert"><strong>Warning!</strong> Do not change the file names from the .CSV files   (These files will be unuseable in the C# application)</p>
+</div>
+
         <?php
         if (isset($_GET['message'])!= null )
         {

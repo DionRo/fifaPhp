@@ -71,3 +71,12 @@ strong{
 .game-item:hover .adjust {
     display: block;
 }
+.box{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.warning {
+    color: red;
+
+}
