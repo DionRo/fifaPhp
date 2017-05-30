@@ -13,7 +13,7 @@ if(isset($_POST["export-matches"])){
     header('Content-Type: text/csv; charset=utf-8');
     header('Content-Disposition: attachment; filename=matches.csv');
     $output = fopen("php://output", "w");
-    fputcsv($output, array('id', 'team_id_a', 'team_id_b', 'score_id_a', 'score_id_b'));
+    fputcsv($output, array('Game_id', 'HomeTeam', 'AwayTeam', 'HomeTeamScore', 'AwayTeamScore'));
 
     $query = 'SELECT `id`,`team_id_a`,`team_id_b`,`score_team_a`,`score_team_b` FROM tbl_matches';
     $stmt = $db_conn->prepare($query);
