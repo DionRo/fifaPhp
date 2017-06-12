@@ -105,20 +105,6 @@ table th {
     opacity: 0.1;
 }
 
-@media screen and (max-width: 860px){
-    .main-head{
-        height: 125px;
-    }
-
-    header h1{
-        font-size: 37.5px;
-    }
-
-    header nav a{
-        visibility: hidden;
-    }
-}
-
 .main-head:hover{
     opacity: 1 !important;
 }
@@ -147,6 +133,21 @@ nav a{
     justify-content:center;
 }
 
+@media screen and (max-width: 860px){
+    .main-head{
+        height: 125px;
+    }
+
+    header h1{
+        font-size: 37.5px;
+    }
+
+    header nav a{
+        visibility: hidden;
+    }
+}
+
+
 /*----------------------------------------Intro----------------------------------------*/
 
 .intro{
@@ -156,13 +157,6 @@ nav a{
 .Content{
     display: flex;
     justify-content: center;
-}
-
-@media screen and (max-width: 720px){
-    .Content{
-        display: flex;
-        flex-direction: column;
-    }
 }
 
 
@@ -178,6 +172,13 @@ nav a{
 .intro .extra ul{
     text-align: left;
     list-style: none;
+}
+
+@media screen and (max-width: 720px){
+    .Content{
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 @media screen and (max-width: 720px){
@@ -209,15 +210,6 @@ nav a{
     margin: 35px;
 }
 
-@media screen and (max-width: 720px){
-    .team{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
 .member{
     margin: 15px;
     padding: 15px;
@@ -241,6 +233,15 @@ nav a{
     padding-right: 25%;
     width: 50px;
     height: 75px;
+}
+
+@media screen and (max-width: 720px){
+    .team{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 /*----------------------------------------Tournament----------------------------------------*/

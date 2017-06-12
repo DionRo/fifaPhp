@@ -15,6 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="Scripts/smooth-scroll.js"></script>
     <script type="text/javascript" src="Scripts/scroll.js"></script>
     <link rel="stylesheet" href="Style/Main_Web_CSS.css">
     <title>FiFa Tournament</title>
@@ -28,6 +29,7 @@
         </div>
 
         <nav>
+
             <a data-scroll data-options='{ "easing": "linear" }' href="#Top-Header">Home</a>
             <a data-scroll data-options='{ "easing": "linear" }' href="#intro">Intro</a>
             <a data-scroll data-options='{ "easing": "linear" }' href="#group">Groep 3</a>
@@ -115,11 +117,11 @@
 
                 <div class="member">
 
-                    <h4>Name</h4>
+                    <h4>Kutay Yalcinkaya</h4>
                     <img src="Img/Profile_Picture/Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
                     <div class="describe_Member">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
+                        <p>Born in 02/1998. I am man form turkey. I started to making application when I was 17. My experience came from my youth, I was always interested in Computer science. I took the computer home apart en rebuild it, but this is a way different field that what I am doing now. But I always tell my self "Don't stop, there are always a road that you didn't walk".</p>
                     </div>
                 </div>
             </div>
