@@ -107,11 +107,16 @@
 
                 <div class="member">
 
-                    <h4>Name</h4>
+                    <h4>Lex Krooswijk</h4>
                     <img src="Img/Profile_Picture/Placeholder_Profile_Pic.png" alt="a profile picture of one of the creators">
 
                     <div class="describe_Member">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolorem expedita fugit nam nisi reiciendis totam. Dolorum et laborum quos temporibus? Impedit labore molestiae nihil optio praesentium, quasi similique!</p>
+                        <p>
+                            Hi there, my name is Lex Krooswijk, and I was born on the 26th of January in the year 2000.
+                            I'm studying computer science because I enjoy playing around with computers and creating my own things.
+                            Before I started this course I hadn't touched any coding yet so this is all very new to me.
+                            But in my opionion I think I'm doing rather well.
+                        </p>
                     </div>
                 </div>
 
