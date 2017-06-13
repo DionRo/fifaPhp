@@ -165,6 +165,7 @@ if($played_matches == 0)
             $stmt->execute();
             $matches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            $db_conn->query('DELETE FROM tbl_matches WHERE matchType = 1');
 
             $poule_winners = [];
             for ($i = 1; $i <= NUMBER_OF_POULES; $i++) {
@@ -214,6 +215,8 @@ if($played_matches == 0)
                     $stmt->execute();
                     $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+                    $db_conn->query('DELETE FROM tbl_matches WHERE matchType = 2');
+
                     foreach ( $results as $result ) {
                         if ( $result['score_team_a'] > $result['score_team_b'] ) {
                             $team_a = [];
@@ -239,6 +242,29 @@ if($played_matches == 0)
 
                             array_push($best_of_eight_winners, $team_b);
 
+                        } else {
+                            $winningteam = rand(0, 1);
+
+                            if ($winningteam == 0){
+                                foreach ( $teams as $team ) {
+                                    if ( $result['team_id_a'] == $team['id'] ) {
+                                        $team_a = $team;
+
+                                    }
+                                }
+
+                                array_push($best_of_eight_winners, $team_a);
+                            }
+                            else {
+                                foreach ( $teams as $team ) {
+                                    if ( $result['team_id_b'] == $team['id'] ) {
+                                        $team_b = $team;
+
+                                    }
+                                }
+
+                                array_push($best_of_eight_winners, $team_b);
+                            }
                         }
                     }
 
@@ -272,45 +298,79 @@ if($played_matches == 0)
                         $stmt->execute();
                         $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+                        $query = 'SELECT * FROM tbl_matches WHERE isPlayed = 1 AND matchType = 3';
+                        $stmt = $db_conn->prepare($query);
+                        $stmt->execute();
+                        $finale_match = $stmt->rowCount();
+
+                        $db_conn->query('DELETE FROM tbl_matches WHERE matchType = 3');
+
                         $best_of_four_winners = [];
 
-                        foreach ( $results as $result ) {
-                            echo 'a';
-                            if ($result['score_team_a'] > $result['score_team_b']) {
-                                $team_a = [];
+                        if ($finale_match > 0) {
+                            $message = '<strong>De finale is al gespeeld</strong>';
 
-                                foreach ($teams as $team) {
-                                    if ($result['team_id_a'] == $team['id']) {
-                                        $team_a = $team;
+                        } else {
+                            foreach ($results as $result) {
+                                if ($result['score_team_a'] > $result['score_team_b']) {
+                                    $team_a = [];
+
+                                    foreach ($teams as $team) {
+                                        if ($result['team_id_a'] == $team['id']) {
+                                            $team_a = $team;
+                                        }
+                                    }
+
+                                    array_push($best_of_four_winners, $team_a);
+
+                                } else if ($result['score_team_b'] > $result['score_team_a']) {
+                                    $team_b = [];
+
+                                    foreach ($teams as $team) {
+                                        if ($result['team_id_b'] == $team['id']) {
+                                            $team_b = $team;
+                                        }
+                                    }
+
+                                    array_push($best_of_four_winners, $team_b);
+
+                                } else {
+                                    $winningteam = rand(0, 1);
+
+                                    if ($winningteam == 0) {
+                                        foreach ($teams as $team) {
+                                            if ($result['team_id_a'] == $team['id']) {
+                                                $team_a = $team;
+
+                                            }
+                                        }
+
+                                        array_push($best_of_four_winners, $team_a);
+                                    } else {
+                                        foreach ($teams as $team) {
+                                            if ($result['team_id_b'] == $team['id']) {
+                                                $team_b = $team;
+
+                                            }
+                                        }
+
+                                        array_push($best_of_four_winners, $team_b);
                                     }
                                 }
-
-                                array_push($best_of_four_winners, $team_a);
-
-                            } else {
-                                $team_b = [];
-
-                                foreach ($teams as $team) {
-                                    if ($result['team_id_b'] == $team['id']) {
-                                        $team_b = $team;
-                                    }
-                                }
-
-                                array_push($best_of_four_winners, $team_b);
-
                             }
+
+                            $match = [
+                                $best_of_four_winners[0],
+                                $best_of_four_winners[1],
+                            ];
+
+                            $query = 'INSERT INTO tbl_matches (team_id_a, team_id_b, matchType) VALUES (:team_id_a, :team_id_b, 3)';
+                            $stmt = $db_conn->prepare($query);
+                            $stmt->execute(['team_id_a' => $match[0]['id'], 'team_id_b' => $match[1]['id']]);
+
+                            $message = '<strong>Finale is gegenereerd</strong>';
+
                         }
-
-                        $match = [
-                            $best_of_four_winners[0],
-                            $best_of_four_winners[1],
-                        ];
-
-                        $query = 'INSERT INTO tbl_matches (team_id_a, team_id_b, matchType) VALUES (:team_id_a, :team_id_b, 3)';
-                        $stmt = $db_conn->prepare($query);
-                        $stmt->execute(['team_id_a' => $match[0]['id'], 'team_id_b' => $match[1]['id']]);
-
-                        $message = '<strong>Finale is gegenereerd</strong>';
 
                     } else {
                         $message = '<strong>Er is al een wedstrijd gespeel, het schema kan niet meer worden aangepast</strong>';
